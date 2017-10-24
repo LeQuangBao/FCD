@@ -18,8 +18,20 @@ public class Sensor {
 	public String toString() {
 		return "";
 	}
-	
-	
+
+	public Sensor(String id, String name, boolean init, int sType, int maxSendingRate, int maxProcessingRate, float x,
+			float y, float width) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.init = init;
+		this.sType = sType;
+		this.maxSendingRate = maxSendingRate;
+		this.maxProcessingRate = maxProcessingRate;
+		this.x = x;
+		this.y = y;
+		this.width = width;
+	}
 
 	public Sensor(String id, String name, boolean init, int sType, int maxSendingRate, int maxProcessingRate) {
 		super();
@@ -30,8 +42,6 @@ public class Sensor {
 		this.maxSendingRate = maxSendingRate;
 		this.maxProcessingRate = maxProcessingRate;
 	}
-
-
 
 	public Sensor() {
 		super();
