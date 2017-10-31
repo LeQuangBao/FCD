@@ -1,6 +1,8 @@
 package util;
 
 import java.io.File;
+import java.util.HashSet;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,69 +16,136 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import model.Channel;
+import model.Network;
+import model.Sensor;
+import model.WSN;
+
 public class WriteXMLFile {
 
-	public static void main(String argv[]) {
+	public static void write(WSN wsn) {
+		HashSet<Sensor> sensors = wsn.getSensors();
+		HashSet<Channel> channels = wsn.getChannels();
+		Network network = wsn.getNetwork();
+		model.Process process = wsn.getProcess();
+		
+		try {
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
-	  try {
+			// root elements
+			Document doc = docBuilder.newDocument();
+			Element rootElement = doc.createElement("WSN");
+			doc.appendChild(rootElement);
 
-		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			// Network
+			Element eNetwork = doc.createElement("Network");
+			rootElement.appendChild(eNetwork);
 
-		// root elements
-		Document doc = docBuilder.newDocument();
-		Element rootElement = doc.createElement("company");
-		doc.appendChild(rootElement);
+			
+			Attr attr = doc.createAttribute("ID");
+			Attr attr1 = doc.createAttribute("NumberOfSensors");
+			Attr attr2 = doc.createAttribute("NumberOfPackets");
+			Attr attr3 = doc.createAttribute("SensorMaxBufferSize");
+			Attr attr4 = doc.createAttribute("SensorMaxQueueSize");
+			Attr attr5 = doc.createAttribute("ChannelMaxBufferSize");
+			
+			attr.setValue(network.getId());			
+			attr1.setValue(Integer.toString(network.getNumberOfSensors()));
+			attr2.setValue(Integer.toString(network.getNumberOfPackets()));
+			attr3.setValue(Integer.toString(network.getSensorMaxBufferSize()));
+			attr4.setValue(Integer.toString(network.getSensorMaxQueueSize()));
+			attr5.setValue(Integer.toString(network.getChannelMaxBufferSize()));
+			eNetwork.setAttributeNode(attr);
+			eNetwork.setAttributeNode(attr1);
+			eNetwork.setAttributeNode(attr2);
+			eNetwork.setAttributeNode(attr3);
+			eNetwork.setAttributeNode(attr4);
+			eNetwork.setAttributeNode(attr5);
+			
+			// Process
+			Element eProcess = doc.createElement("Process");
+			rootElement.appendChild(eProcess);
+			
+			attr = doc.createAttribute("Name");
+			attr1 = doc.createAttribute("Parameter");
+			attr2 = doc.createAttribute("Zoom");
+			attr3 = doc.createAttribute("StateCounter");
+			attr.setValue(process.getName());			
+			attr1.setValue(process.getParameter());
+			attr2.setValue(Integer.toString(process.getZoom()));
+			attr3.setValue(Integer.toString(process.getstateCounter()));
+			eProcess.setAttributeNode(attr);
+			eProcess.setAttributeNode(attr1);
+			eProcess.setAttributeNode(attr2);
+			eProcess.setAttributeNode(attr3);
 
-		// staff elements
-		Element staff = doc.createElement("Staff");
-		rootElement.appendChild(staff);
+			Element eSensors = doc.createElement("Sensors");
+			eProcess.appendChild(eSensors);
+			
+			Element eChannels = doc.createElement("Channels");
+			eProcess.appendChild(eChannels);
+			
+			for (Sensor s : sensors) {
+				Element eSensor = doc.createElement("Sensor");
+				attr = doc.createAttribute("Name");
+				attr1 = doc.createAttribute("Init");
+				attr2 = doc.createAttribute("Stype");
+				attr3 = doc.createAttribute("id");
+				attr4 = doc.createAttribute("MaxSendingRate");
+				attr5 = doc.createAttribute("MaxProcessingRate");
+				attr.setValue(s.getName());			
+				attr1.setValue(Boolean.toString(s.isInit()));
+				attr2.setValue(Integer.toString(s.getsType()));
+				attr3.setValue(s.getId());
+				attr4.setValue(Integer.toString(s.getMaxSendingRate()));
+				attr5.setValue(Integer.toString(s.getMaxProcessingRate()));
+				eSensor.setAttributeNode(attr);
+				eSensor.setAttributeNode(attr1);
+				eSensor.setAttributeNode(attr2);
+				eSensor.setAttributeNode(attr3);
+				eSensor.setAttributeNode(attr4);
+				eSensor.setAttributeNode(attr5);
+				eSensors.appendChild(eSensor);
+			}
+			for (Channel c : channels) {
+				Element eChannel = doc.createElement("Link");
+				attr = doc.createAttribute("LType");
+				attr1 = doc.createAttribute("CType");
+				attr2 = doc.createAttribute("MaxSendingRate");
+				attr4 = doc.createAttribute("ProbabilityPathCongestion");
+				attr5 = doc.createAttribute("id");
+				attr.setValue(c.getlType());			
+				attr1.setValue(c.getcType());
+				attr2.setValue(Integer.toString(c.getMaxSendingRate()));
+				attr4.setValue(Float.toString(c.getProabilityPathCongestion()));
+				attr5.setValue(c.getId());
+				eChannel.setAttributeNode(attr);
+				eChannel.setAttributeNode(attr1);
+				eChannel.setAttributeNode(attr2);
+				eChannel.setAttributeNode(attr4);
+				eChannel.setAttributeNode(attr5);
+				eSensors.appendChild(eChannel);
+			}
 
-		// set attribute to staff element
-		Attr attr = doc.createAttribute("id");
-		attr.setValue("1");
-		staff.setAttributeNode(attr);
 
-		// shorten way
-		// staff.setAttribute("id", "1");
+			// write the content into xml file
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File("D:\\file.KWSN"));
 
-		// firstname elements
-		Element firstname = doc.createElement("firstname");
-		firstname.appendChild(doc.createTextNode("yong"));
-		staff.appendChild(firstname);
+			// Output to console for testing
+			// StreamResult result = new StreamResult(System.out);
 
-		// lastname elements
-		Element lastname = doc.createElement("lastname");
-		lastname.appendChild(doc.createTextNode("mook kim"));
-		staff.appendChild(lastname);
+			transformer.transform(source, result);
 
-		// nickname elements
-		Element nickname = doc.createElement("nickname");
-		nickname.appendChild(doc.createTextNode("mkyong"));
-		staff.appendChild(nickname);
+			System.out.println("File saved!");
 
-		// salary elements
-		Element salary = doc.createElement("salary");
-		salary.appendChild(doc.createTextNode("100000"));
-		staff.appendChild(salary);
-
-		// write the content into xml file
-		TransformerFactory transformerFactory = TransformerFactory.newInstance();
-		Transformer transformer = transformerFactory.newTransformer();
-		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new File("C:\\file.xml"));
-
-		// Output to console for testing
-		// StreamResult result = new StreamResult(System.out);
-
-		transformer.transform(source, result);
-
-		System.out.println("File saved!");
-
-	  } catch (ParserConfigurationException pce) {
-		pce.printStackTrace();
-	  } catch (TransformerException tfe) {
-		tfe.printStackTrace();
-	  }
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		}
 	}
 }

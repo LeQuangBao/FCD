@@ -24,6 +24,14 @@ public class DataProvider {
 	private static model.Process process;
 	private static WSN wsn;
 
+	public static WSN getWsn() {
+		return wsn;
+	}
+
+	public static void setWsn(WSN wsn) {
+		DataProvider.wsn = wsn;
+	}
+
 	public static void readFile() {
 		try {
 			// read xml file

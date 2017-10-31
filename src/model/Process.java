@@ -4,16 +4,16 @@ public class Process {
 	String name;
 	String parameter;
 	int zoom;
-	int stateCoutner;
+	int stateCounter;
 
 	public Process() {
 	}
 
-	public Process(String name, String parameter, int zoom, int stateCoutner) {
+	public Process(String name, String parameter, int zoom, int stateCounter) {
 		this.name = name;
 		this.parameter = parameter;
 		this.zoom = zoom;
-		this.stateCoutner = stateCoutner;
+		this.stateCounter = stateCounter;
 	}
 
 	public String getName() {
@@ -40,12 +40,12 @@ public class Process {
 		this.zoom = zoom;
 	}
 
-	public int getStateCoutner() {
-		return stateCoutner;
+	public int getstateCounter() {
+		return stateCounter;
 	}
 
-	public void setStateCoutner(int stateCoutner) {
-		this.stateCoutner = stateCoutner;
+	public void setstateCounter(int stateCounter) {
+		this.stateCounter = stateCounter;
 	}
 
 }

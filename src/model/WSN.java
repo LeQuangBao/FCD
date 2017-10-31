@@ -6,6 +6,22 @@ public class WSN {
 
 	private Network network;
 	private Process process;
+	public Network getNetwork() {
+		return network;
+	}
+
+	public void setNetwork(Network network) {
+		this.network = network;
+	}
+
+	public Process getProcess() {
+		return process;
+	}
+
+	public void setProcess(Process process) {
+		this.process = process;
+	}
+
 	private HashSet<Sensor> sensors;
 	private HashSet<Channel> channels;
 
