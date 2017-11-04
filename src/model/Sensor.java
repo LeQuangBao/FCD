@@ -5,7 +5,12 @@ public class Sensor {
 	String id;
 	String name;
 	boolean init;
+	
+	// 1: Source
+	// 2: Sink
+	// 3: Intermediate
 	int sType;
+	
 	int maxSendingRate;
 	int maxProcessingRate;
 	float x;
@@ -15,8 +20,31 @@ public class Sensor {
 	float labelY;
 	float labelWidth;
 
-	public String toString() {
-		return "";
+	/**
+	 * Compare two sensor
+	 * @param sensor
+	 * @return
+	 */
+	public boolean is(Sensor sensor) {
+		if (!sensor.getId().equals(this.id)) {
+			return false;
+		}
+		if (!sensor.getName().equals(this.name)) {
+			return false;
+		}
+		if (!(sensor.isInit() == this.init)) {
+			return false;
+		}
+		if (!(sensor.getsType() == this.sType)) {
+			return false;
+		}
+		if (!(sensor.getMaxSendingRate() == this.maxSendingRate)) {
+			return false;
+		}
+		if (!(sensor.getMaxProcessingRate() == this.maxProcessingRate)) {
+			return false;
+		}
+		return true;
 	}
 
 	public Sensor(String id, String name, boolean init, int sType, int maxSendingRate, int maxProcessingRate, float x,

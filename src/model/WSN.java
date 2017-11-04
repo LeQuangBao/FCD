@@ -6,6 +6,10 @@ public class WSN {
 
 	private Network network;
 	private Process process;
+	private HashSet<Sensor> sensors;
+	private HashSet<Channel> channels;
+	
+
 	public Network getNetwork() {
 		return network;
 	}
@@ -21,9 +25,6 @@ public class WSN {
 	public void setProcess(Process process) {
 		this.process = process;
 	}
-
-	private HashSet<Sensor> sensors;
-	private HashSet<Channel> channels;
 
 	public WSN() {
 	}
@@ -58,4 +59,17 @@ public class WSN {
 		this.channels = channels;
 	}
 
+	/**
+	 * Check if this WSN has that sensor
+	 * @param sensor to be checked
+	 * @return true if that sensor is in this WSN
+	 */
+	public boolean hasSensor(Sensor sensor) {
+		for (Sensor s : sensors) {
+			if (s.is(sensor)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
