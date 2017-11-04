@@ -70,5 +70,38 @@ public class NetworkHandler {
 		}
 		return null;
 	}
-
+	
+	public static Sensor gather(HashSet<Sensor> sensors) {
+		String id = "";
+		String name = "";
+		boolean init = false;
+		int sType = 0;;
+		int maxSendingRate = 0;
+		int maxProcessingRate = Integer.MAX_VALUE;
+		int maxBufferSize = Integer.MAX_VALUE;
+		int maxQueueSize = 0;
+		float x = 0f;
+		float y = 0f;
+		float width = 0f;
+		for (Sensor s : sensors) {
+			id = s.getId();
+			name = s.getName();
+			init = s.isInit();
+			if (sType != 1 && sType != 2) {
+				if (s.getsType() == 1 || s.getsType() == 2) {
+					sType = s.getsType();
+				} else {
+					sType = 3;
+				}
+			}
+			maxSendingRate = maxSendingRate < s.getMaxSendingRate() ? s.getMaxSendingRate() : maxSendingRate;
+			maxProcessingRate = maxProcessingRate > s.getMaxProcessingRate() ? s.getMaxProcessingRate() : maxProcessingRate;
+			maxBufferSize = maxBufferSize > s.getMaxBufferSize() ? s.getMaxBufferSize() : maxBufferSize;
+			x = s.getX();
+			y = s.getY();
+			width = s.getWidth();
+		}
+		Sensor sensor = new Sensor(id, name, init, sType, maxSendingRate, maxProcessingRate, maxBufferSize, maxQueueSize, x, y, width);
+		return sensor;
+	}
 }

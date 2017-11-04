@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Sensor {
@@ -23,6 +24,7 @@ public class Sensor {
 	float labelX;
 	float labelY;
 	float labelWidth;
+	HashSet<Channel> channels = new HashSet<>();
 
 	/**
 	 * Compare two sensor
@@ -37,18 +39,18 @@ public class Sensor {
 		if (!sensor.getName().equals(this.name)) {
 			return false;
 		}
-		if (!(sensor.isInit() == this.init)) {
-			return false;
-		}
-		if (!(sensor.getsType() == this.sType)) {
-			return false;
-		}
-		if (!(sensor.getMaxSendingRate() == this.maxSendingRate)) {
-			return false;
-		}
-		if (!(sensor.getMaxProcessingRate() == this.maxProcessingRate)) {
-			return false;
-		}
+//		if (!(sensor.isInit() == this.init)) {
+//			return false;
+//		}
+//		if (!(sensor.getsType() == this.sType)) {
+//			return false;
+//		}
+//		if (!(sensor.getMaxSendingRate() == this.maxSendingRate)) {
+//			return false;
+//		}
+//		if (!(sensor.getMaxProcessingRate() == this.maxProcessingRate)) {
+//			return false;
+//		}
 		return true;
 	}
 
@@ -136,6 +138,19 @@ public class Sensor {
 		this.labelX = labelX;
 		this.labelY = labelY;
 		this.labelWidth = labelWidth;
+	}
+	
+	
+
+	public HashSet<Channel> getChannels() {
+		return channels;
+	}
+
+	public void setChannels(HashSet<Channel> channels) {
+		this.channels = channels;
+	}
+	public void addChannels(Channel channel) {
+		channels.add(channel);
 	}
 
 	public int getMaxBufferSize() {

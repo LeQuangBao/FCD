@@ -69,7 +69,7 @@ public class ReadXMLFile {
 			}
 			for (int i = 0; i < sensorList.getLength(); i++) {
 				Node node = sensorList.item(i);
-				Node nodep = positionList.item(i * 2);
+				Node nodep = positionList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE && nodep.getNodeType() == Node.ELEMENT_NODE) {
 					Element element = (Element) node;
 					Element elementp = (Element) nodep;
