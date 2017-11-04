@@ -1,18 +1,22 @@
 package model;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Sensor {
 
 	String id;
 	String name;
 	boolean init;
-	
+
 	// 1: Source
 	// 2: Sink
 	// 3: Intermediate
 	int sType;
-	
+
 	int maxSendingRate;
 	int maxProcessingRate;
+	int maxBufferSize;
+	int maxQueueSize;
 	float x;
 	float y;
 	float width;
@@ -22,6 +26,7 @@ public class Sensor {
 
 	/**
 	 * Compare two sensor
+	 * 
 	 * @param sensor
 	 * @return
 	 */
@@ -47,6 +52,44 @@ public class Sensor {
 		return true;
 	}
 
+	public Sensor(String id, String name, boolean init, int sType, int maxSendingRate, int maxProcessingRate,
+			int maxBufferSize, int maxQueueSize, float x, float y, float width) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.init = init;
+		this.sType = sType;
+		this.maxSendingRate = maxSendingRate;
+		this.maxProcessingRate = maxProcessingRate;
+		this.maxBufferSize = maxBufferSize;
+		this.maxQueueSize = maxQueueSize;
+		this.x = x;
+		this.y = y;
+		this.width = width;
+	}
+
+
+
+	public Sensor(String id, String name, boolean init, int sType, int maxSendingRate, int maxProcessingRate,
+			int maxBufferSize, int maxQueueSize, float x, float y, float width, float labelX, float labelY,
+			float labelWidth) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.init = init;
+		this.sType = sType;
+		this.maxSendingRate = maxSendingRate;
+		this.maxProcessingRate = maxProcessingRate;
+		this.maxBufferSize = maxBufferSize;
+		this.maxQueueSize = maxQueueSize;
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.labelX = labelX;
+		this.labelY = labelY;
+		this.labelWidth = labelWidth;
+	}
+
 	public Sensor(String id, String name, boolean init, int sType, int maxSendingRate, int maxProcessingRate, float x,
 			float y, float width) {
 		super();
@@ -59,6 +102,9 @@ public class Sensor {
 		this.x = x;
 		this.y = y;
 		this.width = width;
+		this.maxBufferSize = ThreadLocalRandom.current().nextInt(1, 7);;
+		this.maxQueueSize = ThreadLocalRandom.current().nextInt(1, 7);;
+		
 	}
 
 	public Sensor(String id, String name, boolean init, int sType, int maxSendingRate, int maxProcessingRate) {
@@ -90,6 +136,22 @@ public class Sensor {
 		this.labelX = labelX;
 		this.labelY = labelY;
 		this.labelWidth = labelWidth;
+	}
+
+	public int getMaxBufferSize() {
+		return maxBufferSize;
+	}
+
+	public void setMaxBufferSize(int maxBufferSize) {
+		this.maxBufferSize = maxBufferSize;
+	}
+
+	public int getMaxQueueSize() {
+		return maxQueueSize;
+	}
+
+	public void setMaxQueueSize(int maxQueueSize) {
+		this.maxQueueSize = maxQueueSize;
 	}
 
 	public float getX() {
@@ -140,19 +202,13 @@ public class Sensor {
 		this.labelWidth = labelWidth;
 	}
 
-
-
 	public String getId() {
 		return id;
 	}
 
-
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
-
 
 	public String getName() {
 		return name;

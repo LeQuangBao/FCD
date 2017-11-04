@@ -1,5 +1,7 @@
 package model;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Channel {
 
 	String id;
@@ -7,6 +9,7 @@ public class Channel {
 	String cType;
 	float proabilityPathCongestion;
 	int maxSendingRate;
+	int maxBufferSize;
 	Sensor firstSensor;
 	Sensor secondSensor;
 
@@ -24,6 +27,15 @@ public class Channel {
 		this.maxSendingRate = maxSendingRate;
 		this.firstSensor = firstSensor;
 		this.secondSensor = secondSensor;
+		this.maxBufferSize = ThreadLocalRandom.current().nextInt(1, 7);
+	}
+
+	public int getMaxBufferSize() {
+		return maxBufferSize;
+	}
+
+	public void setMaxBufferSize(int maxBufferSize) {
+		this.maxBufferSize = maxBufferSize;
 	}
 
 	public String getId() {

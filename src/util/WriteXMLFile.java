@@ -23,7 +23,7 @@ import model.WSN;
 
 public class WriteXMLFile {
 
-	public static void write(WSN wsn) {
+	public static void write(WSN wsn, String path) {
 		HashSet<Sensor> sensors = wsn.getSensors();
 		HashSet<Channel> channels = wsn.getChannels();
 		Network network = wsn.getNetwork();
@@ -152,7 +152,12 @@ public class WriteXMLFile {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("D:\\file.kwsn"));
+			StreamResult result = null;
+			if (path == "") {
+				result = new StreamResult(new File("output\\file.kwsn"));
+			} else {
+				result = new StreamResult(new File(path));
+			}
 
 			// Output to console for testing
 			// StreamResult result = new StreamResult(System.out);

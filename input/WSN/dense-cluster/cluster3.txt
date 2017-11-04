@@ -1,0 +1,81 @@
+<WSN>
+  <Declaration>
+  </Declaration>
+  <Network ID="635963538722308358" NumberOfSensors="20" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5" ChannelMaxBufferSize="5">
+    <Process Name="Network_1" Parameter="" Zoom="1" StateCounter="6">
+      <Sensors>
+	<Sensor Name="Sensor 11" Init="False" SType="3" id="11" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="6.5" Y="6" Width="0.2" />
+	</Sensor>
+	<Sensor Name="Sensor 15" Init="False" SType="3" id="15" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="7.1" Y="7" Width="0.2" />
+	</Sensor>
+	<Sensor Name="Sensor 19" Init="False" SType="3" id="19" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="8" Y="6.8" Width="0.2" />
+	</Sensor>
+	<Sensor Name="Sensor 20" Init="False" SType="3" id="20	" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="7.3" Y="7" Width="0.2" />
+	</Sensor>
+      </Sensors>
+      <Links>
+        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="11_15">
+          <From>Sensor 11</From>
+          <To>Sensor 15</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="2.085" Y="2.015" Width="0.25" />
+          </Label>
+        </Link>
+        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="11_19">
+          <From>Sensor 11</From>
+          <To>Sensor 19</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="2.085" Y="2.015" Width="0.25" />
+          </Label>
+        </Link>
+        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="15_20">
+          <From>Sensor 15</From>
+          <To>Sensor 19</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="2.085" Y="2.015" Width="0.25" />
+          </Label>
+        </Link>
+      </Links>
+    </Process>
+  </Network>
+</WSN>
