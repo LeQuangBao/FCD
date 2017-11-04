@@ -16,7 +16,7 @@ import model.Network;
 import model.Sensor;
 import model.WSN;
 
-public class DataProvider {
+public class ReadXMLFile {
 
 	private static HashSet<Sensor> sensors;
 	private static HashSet<Channel> channels;
@@ -29,7 +29,7 @@ public class DataProvider {
 	}
 
 	public static void setWsn(WSN wsn) {
-		DataProvider.wsn = wsn;
+		ReadXMLFile.wsn = wsn;
 	}
 
 	public static void readFile() {
@@ -130,7 +130,7 @@ public class DataProvider {
 	}
 
 	public static void setSensors(HashSet<Sensor> sensors) {
-		DataProvider.sensors = sensors;
+		ReadXMLFile.sensors = sensors;
 	}
 
 	public static HashSet<Channel> getChannels() {
@@ -138,7 +138,7 @@ public class DataProvider {
 	}
 
 	public static void setChannels(HashSet<Channel> channels) {
-		DataProvider.channels = channels;
+		ReadXMLFile.channels = channels;
 	}
 
 }

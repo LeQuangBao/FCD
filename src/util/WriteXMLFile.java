@@ -65,7 +65,7 @@ public class WriteXMLFile {
 			
 			// Process
 			Element eProcess = doc.createElement("Process");
-			rootElement.appendChild(eProcess);
+			eNetwork.appendChild(eProcess);
 			
 			attr = doc.createAttribute("Name");
 			attr1 = doc.createAttribute("Parameter");
@@ -83,14 +83,14 @@ public class WriteXMLFile {
 			Element eSensors = doc.createElement("Sensors");
 			eProcess.appendChild(eSensors);
 			
-			Element eChannels = doc.createElement("Channels");
+			Element eChannels = doc.createElement("Links");
 			eProcess.appendChild(eChannels);
 			
 			for (Sensor s : sensors) {
 				Element eSensor = doc.createElement("Sensor");
 				attr = doc.createAttribute("Name");
 				attr1 = doc.createAttribute("Init");
-				attr2 = doc.createAttribute("Stype");
+				attr2 = doc.createAttribute("SType");
 				attr3 = doc.createAttribute("id");
 				attr4 = doc.createAttribute("MaxSendingRate");
 				attr5 = doc.createAttribute("MaxProcessingRate");
@@ -107,6 +107,18 @@ public class WriteXMLFile {
 				eSensor.setAttributeNode(attr4);
 				eSensor.setAttributeNode(attr5);
 				eSensors.appendChild(eSensor);
+				
+				Element ePosition = doc.createElement("Position");
+				attr = doc.createAttribute("X");
+				attr1 = doc.createAttribute("Y");
+				attr2 = doc.createAttribute("Width");
+				attr.setValue(Float.toString(s.getX()));			
+				attr1.setValue(Float.toString(s.getY()));			
+				attr2.setValue(Float.toString(s.getWidth()));
+				ePosition.setAttributeNode(attr);
+				ePosition.setAttributeNode(attr1);
+				ePosition.setAttributeNode(attr2);
+				eSensor.appendChild(ePosition);
 			}
 			for (Channel c : channels) {
 				Element eChannel = doc.createElement("Link");
@@ -125,7 +137,14 @@ public class WriteXMLFile {
 				eChannel.setAttributeNode(attr2);
 				eChannel.setAttributeNode(attr4);
 				eChannel.setAttributeNode(attr5);
-				eSensors.appendChild(eChannel);
+				eChannels.appendChild(eChannel);
+				
+				Element eFrom = doc.createElement("From");
+				Element eTo = doc.createElement("To");
+				eFrom.appendChild(doc.createTextNode(c.getFirstSensor().getName()));
+				eTo.appendChild(doc.createTextNode(c.getSecondSensor().getName()));
+				eChannel.appendChild(eFrom);
+				eChannel.appendChild(eTo);
 			}
 
 
@@ -133,7 +152,7 @@ public class WriteXMLFile {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("D:\\file.KWSN"));
+			StreamResult result = new StreamResult(new File("D:\\file.kwsn"));
 
 			// Output to console for testing
 			// StreamResult result = new StreamResult(System.out);
