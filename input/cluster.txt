@@ -31,26 +31,7 @@
       </Sensors>
       <Links>
         <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="4_9">
-          <From>Sensor 4</From>
-          <To>Sensor 9</To>
-          <Select>
-          </Select>
-          <Event>
-          </Event>
-          <ClockGuard>
-          </ClockGuard>
-          <Guard>
-          </Guard>
-          <Program>
-          </Program>
-          <ClockReset>
-          </ClockReset>
-          <Label>
-            <Position X="2.085" Y="2.015" Width="0.25" />
-          </Label>
-        </Link>
-        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="7_3">
-          <From>Sensor 7</From>
+          <From>Sensor 1</From>
           <To>Sensor 3</To>
           <Select>
           </Select>
@@ -68,9 +49,28 @@
             <Position X="2.085" Y="2.015" Width="0.25" />
           </Label>
         </Link>
+        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="7_3">
+          <From>Sensor 2</From>
+          <To>Sensor 1</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="2.085" Y="2.015" Width="0.25" />
+          </Label>
+        </Link>
         <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="9_12">
-          <From>Sensor 9</From>
-          <To>Sensor 12</To>
+          <From>Sensor 3</From>
+          <To>Sensor 4</To>
           <Select>
           </Select>
           <Event>
@@ -88,8 +88,8 @@
           </Label>
         </Link>
         <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="12_14">
-          <From>Sensor 12</From>
-          <To>Sensor 14</To>
+          <From>Sensor 4</From>
+          <To>Sensor 6</To>
           <Select>
           </Select>
           <Event>
@@ -107,8 +107,8 @@
           </Label>
         </Link>
         <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="13_18">
-          <From>Sensor 13</From>
-          <To>Sensor 18</To>
+          <From>Sensor 5</From>
+          <To>Sensor 7</To>
           <Select>
           </Select>
           <Event>
@@ -126,8 +126,8 @@
           </Label>
         </Link>
         <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="14_13">
-          <From>Sensor 14</From>
-          <To>Sensor 13</To>
+          <From>Sensor 6</From>
+          <To>Sensor 5</To>
           <Select>
           </Select>
           <Event>
@@ -145,8 +145,8 @@
           </Label>
         </Link>
         <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="18_7">
-          <From>Sensor 18</From>
-          <To>Sensor 7</To>
+          <From>Sensor 7</From>
+          <To>Sensor 2</To>
           <Select>
           </Select>
           <Event>

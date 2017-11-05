@@ -35,7 +35,7 @@ public class DataProvider {
 	public static void readFile() {
 		try {
 			// read xml file
-			File inputFile = new File("input\\5-sensors.kwsn");
+			File inputFile = new File("input\\wsn.kwsn");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(inputFile);
