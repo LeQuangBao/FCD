@@ -1,0 +1,149 @@
+<WSN>
+  <Declaration>
+  </Declaration>
+  <Network ID="635963538722308358" NumberOfSensors="5" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5" ChannelMaxBufferSize="5">
+    <Process Name="Network_1" Parameter="" Zoom="1" StateCounter="6">
+      <Sensors>
+        <Sensor Name="Sensor 2" Init="False" SType="3" id="2" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="2.67" Y="1.33" Width="0.2" />
+        </Sensor>
+        <Sensor Name="Sensor 5" Init="False" SType="2" id="5" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="6" Y="2.6" Width="0.2" />
+        </Sensor>
+        <Sensor Name="Sensor 1" Init="True" SType="1" id="1" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="1.3" Y="2.5" Width="0.2" />
+        </Sensor>
+        <Sensor Name="Sensor 3" Init="False" SType="3" id="3" MaxSendingRate="5" MaxProcessingRate="2" CGNLevel="0">
+          <Position X="2.81" Y="5.63" Width="0.2" />
+        </Sensor>
+        <Sensor Name="Sensor 4" Init="False" SType="3" id="4" MaxSendingRate="4" MaxProcessingRate="2" CGNLevel="0">
+          <Position X="4" Y="2.5" Width="0.2" />
+        </Sensor>
+		<Sensor Name="Sensor 6" Init="False" SType="3" id="6" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="4.8" Y="3.2" Width="0.2" />
+        </Sensor>
+		<Sensor Name="Sensor 7" Init="False" SType="3" id="7" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
+          <Position X="5" Y="1.8" Width="0.2" />
+        </Sensor>
+      </Sensors>
+      <Links>
+        <Link LType="Real" CType="2" MaxSendingRate="4" CGNLevel="0" ProbabilityPathCongestion="0.25" id="1_2">
+          <From>Sensor 1</From>
+          <To>Sensor 2</To>
+        </Link>
+		<Link LType="Real" CType="2" MaxSendingRate="5" CGNLevel="0" ProbabilityPathCongestion="0.25" id="7_4">
+          <From>Sensor 7</From>
+          <To>Sensor 4</To>
+        </Link>
+		<Link LType="Real" CType="2" MaxSendingRate="6" CGNLevel="0" ProbabilityPathCongestion="0.25" id="7_2">
+          <From>Sensor 7</From>
+          <To>Sensor 2</To>
+        </Link>
+		<Link LType="Real" CType="2" MaxSendingRate="13" CGNLevel="0" ProbabilityPathCongestion="0.25" id="7_5">
+          <From>Sensor 7</From>
+          <To>Sensor 5</To>
+        </Link>
+		<Link LType="Real" CType="2" MaxSendingRate="10" CGNLevel="0" ProbabilityPathCongestion="0.25" id="1_6">
+          <From>Sensor 1</From>
+          <To>Sensor 6</To>
+        </Link>
+		
+		<Link LType="Real" CType="2" MaxSendingRate="9" CGNLevel="0" ProbabilityPathCongestion="0.25" id="6_4">
+          <From>Sensor 6</From>
+          <To>Sensor 4</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="2.085" Y="2.015" Width="0.25" />
+          </Label>
+        </Link>
+        <Link LType="Real" CType="2" MaxSendingRate="8" CGNLevel="0" ProbabilityPathCongestion="1" id="2_4">
+          <From>Sensor 2</From>
+          <To>Sensor 4</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="3.54" Y="1.87" Width="0.25" />
+          </Label>
+        </Link>
+        <Link LType="Real" CType="2" MaxSendingRate="17" CGNLevel="0" ProbabilityPathCongestion="1" id="4_5">
+          <From>Sensor 4</From>
+          <To>Sensor 5</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="5.205" Y="2.505" Width="0.25" />
+          </Label>
+        </Link>
+        <Link LType="Real" CType="2" MaxSendingRate="15" CGNLevel="0" ProbabilityPathCongestion="0.75" id="1_3">
+          <From>Sensor 1</From>
+          <To>Sensor 3</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="2.155" Y="2.975" Width="0.25" />
+          </Label>
+        </Link>
+        <Link LType="Real" CType="2" MaxSendingRate="14" CGNLevel="0" ProbabilityPathCongestion="1" id="3_4">
+          <From>Sensor 3</From>
+          <To>Sensor 4</To>
+          <Select>
+          </Select>
+          <Event>
+          </Event>
+          <ClockGuard>
+          </ClockGuard>
+          <Guard>
+          </Guard>
+          <Program>
+          </Program>
+          <ClockReset>
+          </ClockReset>
+          <Label>
+            <Position X="3.61" Y="3.21" Width="0.25" />
+          </Label>
+        </Link>
+      </Links>
+    </Process>
+  </Network>
+</WSN>

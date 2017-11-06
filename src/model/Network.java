@@ -4,9 +4,9 @@ public class Network {
 	String id;
 	int numberOfSensors;
 	int numberOfPackets;
-	int sensorMaxBufferSize;
-	int sensorMaxQueueSize;
-	int channelMaxBufferSize;
+	int sensorMaxBufferSize = 0;
+	int sensorMaxQueueSize = 0;
+	int channelMaxBufferSize = 0;
 
 	public Network() {
 	}

@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <WSN>
   <Declaration>
   </Declaration>
-  <Network ID="635963538722308358" NumberOfSensors="5" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5" ChannelMaxBufferSize="5">
+  <Network ChannelMaxBufferSize="5" ID="635963538722308358" NumberOfPackets="10" NumberOfSensors="5" SensorMaxBufferSize="5" SensorMaxQueueSize="5">
     <Process Name="Network_1" Parameter="" Zoom="1" StateCounter="6">
       <Sensors>
         <Sensor Name="Sensor 2" Init="False" SType="3" id="2" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">

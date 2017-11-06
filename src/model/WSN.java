@@ -72,4 +72,11 @@ public class WSN {
 		}
 		return false;
 	}
+	
+	public void formConnection() {
+		for (Channel c : channels) {
+			c.getFirstSensor().addChannels(c);
+			c.getSecondSensor().addChannels(c);
+		}
+	}
 }

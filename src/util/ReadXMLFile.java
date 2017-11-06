@@ -16,26 +16,21 @@ import model.Network;
 import model.Sensor;
 import model.WSN;
 
-public class DataProvider {
+public class ReadXMLFile {
 
-	private static HashSet<Sensor> sensors;
-	private static HashSet<Channel> channels;
-	private static Network network;
-	private static model.Process process;
-	private static WSN wsn;
-
-	public static WSN getWsn() {
-		return wsn;
-	}
-
-	public static void setWsn(WSN wsn) {
-		DataProvider.wsn = wsn;
-	}
-
-	public static void readFile() {
+	public WSN readFile(String path) {
+		HashSet<Sensor> sensors = new HashSet<>();
+		HashSet<Channel> channels = new HashSet<>();
+		Network network = null;
+		model.Process process = null;
+		WSN wsn = null;
 		try {
 			// read xml file
+<<<<<<< HEAD:src/util/DataProvider.java
 			File inputFile = new File("input\\wsn.kwsn");
+=======
+			File inputFile = new File(path);
+>>>>>>> b465f921965fb3ad744602a8b2a2727ca0017367:src/util/ReadXMLFile.java
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(inputFile);
@@ -61,7 +56,8 @@ public class DataProvider {
 					int sensorMaxBufferSize = Integer.parseInt(element.getAttribute("SensorMaxBufferSize"));
 					int sensorMaxQueueSize = Integer.parseInt(element.getAttribute("SensorMaxQueueSize"));
 					int channelMaxBufferSize = Integer.parseInt(element.getAttribute("ChannelMaxBufferSize"));
-					network = new Network(id, numberOfSensors, numberOfPackets, sensorMaxBufferSize, sensorMaxQueueSize, channelMaxBufferSize);
+					network = new Network(id, numberOfSensors, numberOfPackets, sensorMaxBufferSize, sensorMaxQueueSize,
+							channelMaxBufferSize);
 				}
 			}
 			for (int i = 0; i < processList.getLength(); i++) {
@@ -77,7 +73,7 @@ public class DataProvider {
 			}
 			for (int i = 0; i < sensorList.getLength(); i++) {
 				Node node = sensorList.item(i);
-				Node nodep = positionList.item(i*2);
+				Node nodep = positionList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE && nodep.getNodeType() == Node.ELEMENT_NODE) {
 					Element element = (Element) node;
 					Element elementp = (Element) nodep;
@@ -106,39 +102,25 @@ public class DataProvider {
 					String from = element.getElementsByTagName("From").item(0).getTextContent();
 					String to = element.getElementsByTagName("To").item(0).getTextContent();
 					channels.add(new Channel(id, lType, cType, probabilityPathCongestion, maxSendingRate,
-							findSensorByName(from), findSensorByName(to)));
+							findSensorByName(from, sensors), findSensorByName(to, sensors)));
 				}
 			}
-			wsn = new WSN(network, process, sensors, channels);
 			System.out.println("[Reading xml file completed]");
+			wsn = new WSN(network, process,sensors, channels);
+			return wsn;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return wsn;
 	}
 
-	public static Sensor findSensorByName(String name) {
+	private Sensor findSensorByName(String name, HashSet<Sensor> sensors) {
 		for (Sensor s : sensors) {
 			if (s.getName().equals(name)) {
 				return s;
 			}
 		}
 		return null;
-	}
-
-	public static HashSet<Sensor> getSensors() {
-		return sensors;
-	}
-
-	public static void setSensors(HashSet<Sensor> sensors) {
-		DataProvider.sensors = sensors;
-	}
-
-	public static HashSet<Channel> getChannels() {
-		return channels;
-	}
-
-	public static void setChannels(HashSet<Channel> channels) {
-		DataProvider.channels = channels;
 	}
 
 }

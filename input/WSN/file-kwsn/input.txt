@@ -1,0 +1,4 @@
+//file nay de moi nguoi biet thoi. Luc sau k , s, t se nhap vao tinh duoc r nen se bo file nay di.
+k=3
+r=1.76
+source: 1->19
