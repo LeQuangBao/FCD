@@ -36,9 +36,11 @@ public class NetworkHandler {
 		for (Channel c : channels) {
 			if (cluster.hasSensor(c.getFirstSensor()) && !cluster.hasSensor(c.getSecondSensor())) {
 				adjacentNodes.add(c.getSecondSensor());
+				c.getSecondSensor().addChannels(c);
 			}
 			if (!cluster.hasSensor(c.getFirstSensor()) && cluster.hasSensor(c.getSecondSensor())) {
 				adjacentNodes.add(c.getFirstSensor());
+				c.getFirstSensor().addChannels(c);
 			}
 		}
 		return adjacentNodes;
@@ -103,5 +105,11 @@ public class NetworkHandler {
 		}
 		Sensor sensor = new Sensor(id, name, init, sType, maxSendingRate, maxProcessingRate, maxBufferSize, maxQueueSize, x, y, width);
 		return sensor;
+	}
+	
+	public static void setChannelName(Channel channel) {
+		Sensor first = channel.getFirstSensor();
+		Sensor second = channel.getSecondSensor();
+		channel.setId(first.getId() + "_" + second.getId());
 	}
 }
