@@ -1,35 +1,24 @@
 package util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashSet;
-import java.util.Scanner;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import model.Channel;
 import model.Sensor;
+import model.WSN;
 
 public class CreateNewCluster {
 	
-	private static HashSet<Sensor> sensors = DataProvider.getSensors();
-	private static HashSet<Channel> channels = DataProvider.getChannels();
-	private HashSet<Sensor> cluster = new HashSet<>();
-	private HashSet<Sensor> capableSources = new HashSet<>();
-	private HashSet<Sensor> capableSinks = new HashSet<>();	
+	private WSN wsn;
+	private WSN cluster;
+	private HashSet<Sensor> capableSources;
+	private HashSet<Sensor> capableSinks;	
 	private Sensor source;
 	private Sensor sink;
 	
 	public void action() {
-		readFile();
+		initializeData();
 		selectSourceSink();
-		
+		System.out.println("----------------------------");
 		System.out.println("\t\tSOURCE");
 		System.out.println(source.getName());
 		System.out.println("Processing: " + source.getMaxProcessingRate());
@@ -39,6 +28,37 @@ public class CreateNewCluster {
 		System.out.println("Processing: " + sink.getMaxProcessingRate());
 		System.out.println("Sending: " + sink.getMaxSendingRate());
 	}
+	
+	private void initializeData() {
+		ReadXMLFile reader = new ReadXMLFile();
+		
+		wsn = reader.readFile("input\\wsn.kwsn");
+		cluster = reader.readFile("input\\cluster.kwsn");
+	}
+	
+//	private void readFile() {
+//		try {
+//			// read xml file
+//			File inputFile = new File("input\\cluster.kwsn");
+//			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+//			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+//			Document doc = dBuilder.parse(inputFile);
+//			doc.getDocumentElement().normalize();
+//
+//			// parse to NodeList
+//			NodeList sensorList = doc.getElementsByTagName("Sensor");
+//			for (int i = 0; i < sensorList.getLength(); i++) {
+//				Node node = sensorList.item(i);
+//				if (node.getNodeType() == Node.ELEMENT_NODE ) {
+//					Element element = (Element) node;
+//					String id = element.getAttribute("id");
+//					cluster.add(findSensorById(id));
+//				}
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	public void selectSourceSink() {
 		selectCapableSourcesSinks();
@@ -86,9 +106,13 @@ public class CreateNewCluster {
 		boolean sourceExist = checkSourceExist();
 		boolean sinkExist = checkSinkExist();
 		
+		capableSources = new HashSet<>();
+		capableSinks = new HashSet<>();
+		
 		if (sourceExist && sinkExist) {
 			return;
-		} else {		
+		} else {	
+			HashSet<Channel> channels = wsn.getChannels();
 			Sensor firstSensor;
 			Sensor secondSensor;
 			
@@ -110,34 +134,11 @@ public class CreateNewCluster {
 			}
 		}
 	}
-	
-	private void readFile() {
-		try {
-			// read xml file
-			File inputFile = new File("input\\cluster.kwsn");
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputFile);
-			doc.getDocumentElement().normalize();
-
-			// parse to NodeList
-			NodeList sensorList = doc.getElementsByTagName("Sensor");
-			for (int i = 0; i < sensorList.getLength(); i++) {
-				Node node = sensorList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE ) {
-					Element element = (Element) node;
-					String id = element.getAttribute("id");
-					cluster.add(findSensorById(id));
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-			
+				
 	private boolean checkExistInCluster(Sensor sensor) {
 		String id = sensor.getId();
-		for (Sensor ss : cluster) {
+		HashSet<Sensor> sensors = cluster.getSensors();
+		for (Sensor ss : sensors) {
 			if (id.equals(ss.getId())) {
 				return true;
 			}
@@ -146,7 +147,8 @@ public class CreateNewCluster {
 	}
 	
 	private boolean checkSourceExist() {
-		for (Sensor sensor : cluster) {
+		HashSet<Sensor> sensors = cluster.getSensors();
+		for (Sensor sensor : sensors) {
 			if (sensor.getsType() == 1) {
 				source = sensor;
 				return true;
@@ -156,8 +158,9 @@ public class CreateNewCluster {
 	}
 	
 	private boolean checkSinkExist() {
-		for (Sensor sensor : cluster) {
-			if (sensor.getsType() == 1) {
+		HashSet<Sensor> sensors = cluster.getSensors();
+		for (Sensor sensor : sensors) {
+			if (sensor.getsType() == 2) {
 				sink = sensor;
 				return true;
 			}			
@@ -165,7 +168,7 @@ public class CreateNewCluster {
 		return false;
 	}
 	
-	private Sensor findSensorById(String id) {
+	private Sensor findSensorById(String id, HashSet<Sensor> sensors) {
 		for (Sensor sensor : sensors) {
 			if (id.equals(sensor.getId())){
 				return sensor;

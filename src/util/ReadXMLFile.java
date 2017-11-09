@@ -26,11 +26,7 @@ public class ReadXMLFile {
 		WSN wsn = null;
 		try {
 			// read xml file
-<<<<<<< HEAD:src/util/DataProvider.java
-			File inputFile = new File("input\\wsn.kwsn");
-=======
 			File inputFile = new File(path);
->>>>>>> b465f921965fb3ad744602a8b2a2727ca0017367:src/util/ReadXMLFile.java
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(inputFile);

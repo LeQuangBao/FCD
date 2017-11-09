@@ -5,13 +5,9 @@ import java.util.HashSet;
 import model.Channel;
 import model.Sensor;
 import model.WSN;
-<<<<<<< HEAD
 import util.CreateNewCluster;
-import util.DataProvider;
-=======
 import util.NetworkHandler;
 import util.ReadXMLFile;
->>>>>>> b465f921965fb3ad744602a8b2a2727ca0017367
 import util.WriteXMLFile;
 
 public class Main {
