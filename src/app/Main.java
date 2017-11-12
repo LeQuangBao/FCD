@@ -12,7 +12,17 @@ import util.WriteXMLFile;
 
 public class Main {
 	public static void main(String[] args) {
-		step1();
+//		step1();
+		step0();
+	}
+	
+	public static void step0() {
+		ReadXMLFile readXMLFile = new ReadXMLFile();
+		WSN wsn = readXMLFile.readFile("input\\WSN\\BreadthFirstSearchTest.kwsn");
+		HashSet<Sensor> sensors = wsn.getSensors();
+		Sensor s1 = NetworkHandler.findSensorById("1", sensors);
+		Sensor s2 = NetworkHandler.findSensorById("5", sensors);
+		NetworkHandler.findPath(wsn, s1, s2);
 	}
 	
 	public static void step1() {

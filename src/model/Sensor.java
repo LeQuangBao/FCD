@@ -25,6 +25,10 @@ public class Sensor {
 	float labelY;
 	float labelWidth;
 	HashSet<Channel> channels = new HashSet<>();
+	
+	boolean visited = false;
+
+	
 
 	/**
 	 * Compare two sensor
@@ -140,7 +144,9 @@ public class Sensor {
 		this.labelWidth = labelWidth;
 	}
 	
-	
+	public void print() {
+		System.out.println("ID: " + id + ". Name: " + name + ". Visited: " + visited);
+	}
 
 	public HashSet<Channel> getChannels() {
 		return channels;
@@ -264,5 +270,11 @@ public class Sensor {
 	public void setMaxProcessingRate(int maxProcessingRate) {
 		this.maxProcessingRate = maxProcessingRate;
 	}
+	public boolean isVisited() {
+		return visited;
+	}
 
+	public void setVisited(boolean visited) {
+		this.visited = visited;
+	}
 }
