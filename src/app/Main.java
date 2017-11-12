@@ -50,13 +50,13 @@ public class Main {
 				inChannel.setSecondSensor(mainSensor);
 				NetworkHandler.setChannelName(inChannel);
 				mainSensor.addChannels(inChannel);
-				System.out.println(inChannel.getId() + " -- in -- " + inChannel.getDelay());
+//				System.out.println(inChannel.getId() + " -- in -- " + inChannel.getDelay());
 			}
 			if (outChannel != null) {
 				outChannel.setFirstSensor(mainSensor);
 				NetworkHandler.setChannelName(outChannel);
 				mainSensor.addChannels(outChannel);
-				System.out.println(outChannel.getId() + " -- out -- " + outChannel.getDelay());
+//				System.out.println(outChannel.getId() + " -- out -- " + outChannel.getDelay());
 			}
 		}
 		HashSet<Sensor> allNode = (HashSet<Sensor>) adjacentNode.clone();
@@ -64,8 +64,6 @@ public class Main {
 		WSN result = new WSN (cluster.getNetwork(), cluster.getProcess(), allNode, mainSensor.getChannels());
 		
 		
-		WriteXMLFile.write(cluster, "output\\cluster4.kwsn");
-		WriteXMLFile.write(original, "output\\original4.kwsn");
 		WriteXMLFile.write(result, "output\\result.kwsn");
 	}
 }

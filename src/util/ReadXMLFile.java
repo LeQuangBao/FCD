@@ -101,7 +101,7 @@ public class ReadXMLFile {
 							findSensorByName(from, sensors), findSensorByName(to, sensors)));
 				}
 			}
-			System.out.println("[Reading xml file completed]");
+			System.out.println("Reading: [" + path + "] completed");
 			wsn = new WSN(network, process,sensors, channels);
 			return wsn;
 		} catch (Exception e) {

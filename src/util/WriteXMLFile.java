@@ -164,7 +164,7 @@ public class WriteXMLFile {
 
 			transformer.transform(source, result);
 
-			System.out.println("File saved!");
+			System.out.println("Writing: [" + path + "] completed");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
