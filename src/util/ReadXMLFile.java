@@ -26,6 +26,7 @@ public class ReadXMLFile {
 		WSN wsn = null;
 		try {
 			// read xml file
+
 			File inputFile = new File(path);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -42,12 +43,15 @@ public class ReadXMLFile {
 			sensors = new HashSet<>();
 			channels = new HashSet<>();
 
+			//Network
 			for (int i = 0; i < networkList.getLength(); i++) {
 				Node node = networkList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					Element element = (Element) node;
-					String id = element.getAttribute("ID");
-					int numberOfSensors = Integer.parseInt(element.getAttribute("NumberOfSensors"));
+//					String id = element.getAttribute("ID");
+					String id = "ID";
+//					int numberOfSensors = Integer.parseInt(element.getAttribute("NumberOfSensors"));
+					int numberOfSensors = 20;
 					int numberOfPackets = Integer.parseInt(element.getAttribute("NumberOfPackets"));
 					int sensorMaxBufferSize = Integer.parseInt(element.getAttribute("SensorMaxBufferSize"));
 					int sensorMaxQueueSize = Integer.parseInt(element.getAttribute("SensorMaxQueueSize"));
@@ -56,17 +60,20 @@ public class ReadXMLFile {
 							channelMaxBufferSize);
 				}
 			}
-			for (int i = 0; i < processList.getLength(); i++) {
-				Node node = processList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					Element element = (Element) node;
-					String name = element.getAttribute("Name");
-					String parameter = element.getAttribute("Parameter");
-					int zoom = Integer.parseInt(element.getAttribute("Zoom"));
-					int stateCoutner = Integer.parseInt(element.getAttribute("StateCounter"));
-					process = new model.Process(name, parameter, zoom, stateCoutner);
-				}
-			}
+			//Process
+//			for (int i = 0; i < processList.getLength(); i++) {
+//				Node node = processList.item(i);
+//				if (node.getNodeType() == Node.ELEMENT_NODE) {
+//					Element element = (Element) node;
+//					String name = element.getAttribute("Name");
+//					String parameter = element.getAttribute("Parameter");
+//					int zoom = Integer.parseInt(element.getAttribute("Zoom"));
+//					int stateCoutner = Integer.parseInt(element.getAttribute("StateCounter"));
+//					process = new model.Process(name, parameter, zoom, stateCoutner);
+//				}
+//			}
+			process = new model.Process("name", "parameter", 0, 5);
+			//Sensor
 			for (int i = 0; i < sensorList.getLength(); i++) {
 				Node node = sensorList.item(i);
 				Node nodep = positionList.item(i);
@@ -81,20 +88,25 @@ public class ReadXMLFile {
 					int maxProcessingRate = Integer.parseInt(element.getAttribute("MaxProcessingRate"));
 					float x = Float.parseFloat(elementp.getAttribute("X"));
 					float y = Float.parseFloat(elementp.getAttribute("Y"));
-					float width = Float.parseFloat(elementp.getAttribute("Width"));
+//					float width = Float.parseFloat(elementp.getAttribute("Width"));
+					float width = 0.0f;
 					sensors.add(new Sensor(id, name, init, sType, maxSendingRate, maxProcessingRate, x, y, width));
 				}
 			}
+			//Channel
 			for (int i = 0; i < channelList.getLength(); i++) {
 				Node node = channelList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					Element element = (Element) node;
 					String id = element.getAttribute("id");
-					String lType = element.getAttribute("LType");
-					String cType = element.getAttribute("CType");
+//					String lType = element.getAttribute("LType");
+					String lType = "Real";
+//					String cType = element.getAttribute("CType");
+					String cType = "2";
 					int maxSendingRate = Integer.parseInt(element.getAttribute("MaxSendingRate"));
-					float probabilityPathCongestion = Float
-							.parseFloat(element.getAttribute("ProbabilityPathCongestion"));
+//					float probabilityPathCongestion = Float
+//							.parseFloat(element.getAttribute("ProbabilityPathCongestion"));
+					float probabilityPathCongestion = 0.25f;
 					String from = element.getElementsByTagName("From").item(0).getTextContent();
 					String to = element.getElementsByTagName("To").item(0).getTextContent();
 					channels.add(new Channel(id, lType, cType, probabilityPathCongestion, maxSendingRate,
