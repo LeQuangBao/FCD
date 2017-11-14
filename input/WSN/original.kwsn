@@ -20,7 +20,7 @@
           <Position X="4" Y="2.5" Width="0.2" />
         </Sensor>
 		<Sensor Name="Sensor 6" Init="False" SType="3" id="6" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
-          <Position X="5.8" Y="4.2" Width="0.2" />
+          <Position X="5.8" Y="5.2" Width="0.2" />
         </Sensor>
 		<Sensor Name="Sensor 7" Init="False" SType="3" id="7" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
           <Position X="5" Y="1.9" Width="0.2" />
