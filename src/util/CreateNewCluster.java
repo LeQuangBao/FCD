@@ -1,5 +1,6 @@
 package util;
 
+import java.io.File;
 import java.util.HashSet;
 
 import model.Channel;
@@ -14,53 +15,51 @@ public class CreateNewCluster {
 	private HashSet<Sensor> capableSinks;	
 	private Sensor source;
 	private Sensor sink;
+	private Channel sourceChannel;
+	private Channel sinkChannel;
+	private final String wsnPATH = "input\\WSN\\file-kwsn\\wsn.kwsn";
+	private final String inPATH = "input\\WSN\\dense-cluster\\";
+	private final String outPATH = "output\\";
 	
-	public void action() {
-		initializeData();
-		selectSourceSink();
-		System.out.println("----------------------------");
-		System.out.println("\t\tSOURCE");
-		System.out.println(source.getName());
-		System.out.println("Processing: " + source.getMaxProcessingRate());
-		System.out.println("Sending: " + source.getMaxSendingRate());
-		System.out.println("\n\n\t\tSINK");
-		System.out.println(sink.getName());
-		System.out.println("Processing: " + sink.getMaxProcessingRate());
-		System.out.println("Sending: " + sink.getMaxSendingRate());
+	public void autoCreateNewCluster() {
+		int index = 0;
+		String fileName;
+		File file;;
+		
+		while (true) {
+			fileName = "cluster" + index + ".kwsn";
+			file = new File(inPATH+fileName);
+			System.out.println("Processing: " + inPATH + fileName);
+			if (file.exists()) {
+				try {
+					action(fileName);
+					System.out.println("\tProcessed Successfully!");
+					index++;
+				} catch(Exception ex) {
+					System.out.println("\tProcess Failed!\t"+ex);
+					break;
+				}
+			} else {
+				break;
+			}
+		}
 	}
 	
-	private void initializeData() {
+	public void action(String fileName) {
+		initializeData(inPATH + fileName);
+		findSourceSink();
+		findChannelForSourceSink();
+		createWSNFile(fileName);
+	}
+	
+	private void initializeData(String clusterPath) {
 		ReadXMLFile reader = new ReadXMLFile();
 		
-		wsn = reader.readFile("input\\wsn.kwsn");
-		cluster = reader.readFile("input\\cluster.kwsn");
+		wsn = reader.readFile(wsnPATH);
+		cluster = reader.readFile(clusterPath);
 	}
-	
-//	private void readFile() {
-//		try {
-//			// read xml file
-//			File inputFile = new File("input\\cluster.kwsn");
-//			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-//			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-//			Document doc = dBuilder.parse(inputFile);
-//			doc.getDocumentElement().normalize();
-//
-//			// parse to NodeList
-//			NodeList sensorList = doc.getElementsByTagName("Sensor");
-//			for (int i = 0; i < sensorList.getLength(); i++) {
-//				Node node = sensorList.item(i);
-//				if (node.getNodeType() == Node.ELEMENT_NODE ) {
-//					Element element = (Element) node;
-//					String id = element.getAttribute("id");
-//					cluster.add(findSensorById(id));
-//				}
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
-	public void selectSourceSink() {
+		
+	public void findSourceSink() {
 		selectCapableSourcesSinks();
 		
 		//Select Source
@@ -80,6 +79,8 @@ public class CreateNewCluster {
 			
 			source.setMaxProcessingRate(processing);
 			source.setMaxSendingRate(sending);
+			source.setsType(1);
+			source.setInit(true);
 		}
 		
 		//Select Sink
@@ -99,7 +100,50 @@ public class CreateNewCluster {
 			
 			sink.setMaxProcessingRate(processing);
 			sink.setMaxSendingRate(sending);
+			sink.setsType(2);
 		}
+	}
+	
+	private void findChannelForSourceSink() {
+		HashSet<Channel> channels = wsn.getChannels();
+		
+		int max = Integer.MAX_VALUE;
+		int min = Integer.MIN_VALUE;
+		
+		for (Channel channel : channels) {
+			// For Source
+			if (checkSensorExist(channel.getFirstSensor(), capableSources)) {
+				if (channel.getMaxSendingRate() > min) {
+					min = channel.getMaxSendingRate();
+					sourceChannel = channel;
+				}
+			}
+			
+			// For Sink
+			if (checkSensorExist(channel.getSecondSensor(), capableSinks)) {
+				if (channel.getMaxSendingRate() < max) {
+					max = channel.getMaxSendingRate();
+					sinkChannel = channel;
+				}
+			}
+		}
+		sourceChannel.setFirstSensor(source);
+		sinkChannel.setSecondSensor(sink);
+	}
+	
+	private void createWSNFile(String fileName) {
+		HashSet<Sensor> sensors = cluster.getSensors();
+		sensors.add(source);
+		sensors.add(sink);
+		
+		HashSet<Channel> channels = cluster.getChannels();
+		channels.add(sourceChannel);
+		channels.add(sinkChannel);
+		
+		cluster.setSensors(sensors);
+		cluster.setChannels(channels);
+		
+		WriteXMLFile.write(cluster, outPATH + fileName);
 	}
 	
 	private void selectCapableSourcesSinks() {
@@ -133,6 +177,16 @@ public class CreateNewCluster {
 				}
 			}
 		}
+	}
+	
+	private boolean checkSensorExist(Sensor sensor, HashSet<Sensor> sensors) {
+		String id = sensor.getId();
+		for (Sensor ss : sensors) {
+			if (id.equals(ss.getId())) {
+				return true;
+			}
+		}
+		return false;
 	}
 				
 	private boolean checkExistInCluster(Sensor sensor) {

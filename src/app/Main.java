@@ -15,6 +15,8 @@ public class Main {
 	public static void main(String[] args) {
 		buildTopology();
 //		step0();
+//		CreateNewCluster creation = new CreateNewCluster();
+//		creation.autoCreateNewCluster();
 	}
 	
 	public static void step0() {
