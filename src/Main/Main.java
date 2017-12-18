@@ -4,6 +4,8 @@ import java.io.File;
 
 import Editor.DataImport;
 import Editor.Verify;
+import KWNS.WSN;
+import util.ReadXMLFile;
 public class Main 
 {
 	public static void main(String[] args) throws Exception 
@@ -11,10 +13,10 @@ public class Main
 		File aDirectory = new File("Input\\");
 
 	    String[] filesInDir = aDirectory.list();
-
+	    boolean flag = true;
 	    for ( int i=0; i<filesInDir.length; i++ )
 	    {
-	    	boolean flag;
+	    	
 	    	String patch = aDirectory.getPath()+"\\"+filesInDir[i];
 	    	DataImport readKwsn = new DataImport();
 			readKwsn.Import(patch);
@@ -28,7 +30,12 @@ public class Main
 	    	if(flag) {
 	    		break;
 	    	}
-	    }	
+	    }
+	    if(!flag) {
+	    	ReadXMLFile readXMLFile = new ReadXMLFile();
+	    	String patch = aDirectory.getPath();
+	    	WSN wsn =readXMLFile.readFile(patch);
+	    }
 	}
 }
 
