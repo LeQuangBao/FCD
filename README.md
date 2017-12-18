@@ -1,2 +1,0 @@
-# FCD
-Seminar chuyên đề
