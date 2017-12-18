@@ -20,7 +20,7 @@ public class Verify
 		return g;	
 	}
 	
-	public String getVeriInfo(String pnmlFile, String txtFile, String min_txtFile) throws Exception 
+	public Boolean getVeriInfo(String pnmlFile, String txtFile, String min_txtFile) throws Exception 
 	{
 		/*
 		* Read pnml file
@@ -30,7 +30,8 @@ public class Verify
 		
 		Graph g = genGraph(txtFile, pt);
 		//writeStringToFile(s);
-    StringBuilder sb = new StringBuilder();
+    //StringBuilder sb = new StringBuilder();
+		boolean flag =true;
     
     System.out.println("\nThe reachability graph has " + g.getSize() + " nodes.");
 
@@ -38,13 +39,14 @@ public class Verify
 		String congest = g.search(stmt, prog.constList);
     if (congest.isEmpty()) {
       System.out.println("No congestion is found");
-      return sb.toString();
+      flag=false;
+      return flag;
     } else 
     {
 
         Vertex congestState = g.searchState(stmt, prog.constList);
         System.out.println(congest + "\nCongest state is " + congestState.toString());
-        return sb.toString();
+        return flag;
         // sb.append(congest).append("Congest state is ").append(congestState.toString()).append("\n");
   			/*sb.append(congest);		
   			String Hcongest = g.newSearch(stmt, prog.constList);

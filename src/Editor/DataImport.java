@@ -25,7 +25,7 @@ public class DataImport {
 	@SuppressWarnings("unchecked")
 	public void Import (String filePath) 
 	{	
-		String folderPath = "C:\\Users\\Alviss Inugami\\eclipse-workspace\\Seminar_Nhom3\\temp";
+		String folderPath = "temp\\";
 		try {
 			HashMap<String,Object> topologyData = KwsnFileReader.getInstance().readKwsn(filePath);
 			InitializeData data = new InitializeData();
