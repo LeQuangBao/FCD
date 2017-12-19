@@ -1,169 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <WSN>
-  <Declaration>
-  </Declaration>
-  <Network ID="635963538722308358" NumberOfSensors="20" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5" ChannelMaxBufferSize="5">
-    <Process Name="Network_1" Parameter="" Zoom="1" StateCounter="6">
-      <Sensors>
-        <Sensor Name="Sensor 3" Init="False" SType="3" id="3" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
-          <Position X="2.81" Y="3.63" Width="0.2" />
-          <Label>
-            <Position X="2.71" Y="3.88" Width="0.6219791" />
-          </Label>
-        </Sensor>
-	<Sensor Name="Sensor 7" Init="False" SType="3" id="7" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
-          <Position X="3.6" Y="4.6" Width="0.2" />
-	</Sensor>
-	<Sensor Name="Sensor 9" Init="False" SType="3" id="9" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
-          <Position X="3.7" Y="3.5" Width="0.2" />
-	</Sensor>
-	<Sensor Name="Sensor 12" Init="False" SType="3" id="12" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
-          <Position X="4" Y="4" Width="0.2" />
-	</Sensor>
-	<Sensor Name="Sensor 13" Init="False" SType="3" id="13" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
-          <Position X="4.9" Y="5" Width="0.2" />
-	</Sensor>
-	<Sensor Name="Sensor 14" Init="False" SType="3" id="14" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
-          <Position X="4.1" Y="3.89" Width="0.2" />
-	</Sensor>
-	<Sensor Name="Sensor 18" Init="False" SType="3" id="18" MaxSendingRate="3" MaxProcessingRate="5" CGNLevel="0">
-          <Position X="4.8" Y="5.1" Width="0.2" />
-	</Sensor>
-      </Sensors>
-      <Links>
-        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="4_9">
-          <From>Sensor 4</From>
-          <To>Sensor 9</To>
-          <Select>
-          </Select>
-          <Event>
-          </Event>
-          <ClockGuard>
-          </ClockGuard>
-          <Guard>
-          </Guard>
-          <Program>
-          </Program>
-          <ClockReset>
-          </ClockReset>
-          <Label>
-            <Position X="2.085" Y="2.015" Width="0.25" />
-          </Label>
-        </Link>
-        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="7_3">
-          <From>Sensor 7</From>
-          <To>Sensor 3</To>
-          <Select>
-          </Select>
-          <Event>
-          </Event>
-          <ClockGuard>
-          </ClockGuard>
-          <Guard>
-          </Guard>
-          <Program>
-          </Program>
-          <ClockReset>
-          </ClockReset>
-          <Label>
-            <Position X="2.085" Y="2.015" Width="0.25" />
-          </Label>
-        </Link>
-        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="9_12">
-          <From>Sensor 9</From>
-          <To>Sensor 12</To>
-          <Select>
-          </Select>
-          <Event>
-          </Event>
-          <ClockGuard>
-          </ClockGuard>
-          <Guard>
-          </Guard>
-          <Program>
-          </Program>
-          <ClockReset>
-          </ClockReset>
-          <Label>
-            <Position X="2.085" Y="2.015" Width="0.25" />
-          </Label>
-        </Link>
-        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="12_14">
-          <From>Sensor 12</From>
-          <To>Sensor 14</To>
-          <Select>
-          </Select>
-          <Event>
-          </Event>
-          <ClockGuard>
-          </ClockGuard>
-          <Guard>
-          </Guard>
-          <Program>
-          </Program>
-          <ClockReset>
-          </ClockReset>
-          <Label>
-            <Position X="2.085" Y="2.015" Width="0.25" />
-          </Label>
-        </Link>
-        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="13_18">
-          <From>Sensor 13</From>
-          <To>Sensor 18</To>
-          <Select>
-          </Select>
-          <Event>
-          </Event>
-          <ClockGuard>
-          </ClockGuard>
-          <Guard>
-          </Guard>
-          <Program>
-          </Program>
-          <ClockReset>
-          </ClockReset>
-          <Label>
-            <Position X="2.085" Y="2.015" Width="0.25" />
-          </Label>
-        </Link>
-        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="14_13">
-          <From>Sensor 14</From>
-          <To>Sensor 13</To>
-          <Select>
-          </Select>
-          <Event>
-          </Event>
-          <ClockGuard>
-          </ClockGuard>
-          <Guard>
-          </Guard>
-          <Program>
-          </Program>
-          <ClockReset>
-          </ClockReset>
-          <Label>
-            <Position X="2.085" Y="2.015" Width="0.25" />
-          </Label>
-        </Link>
-        <Link LType="Real" CType="2" MaxSendingRate="3" CGNLevel="0" ProbabilityPathCongestion="0.25" id="18_7">
-          <From>Sensor 18</From>
-          <To>Sensor 7</To>
-          <Select>
-          </Select>
-          <Event>
-          </Event>
-          <ClockGuard>
-          </ClockGuard>
-          <Guard>
-          </Guard>
-          <Program>
-          </Program>
-          <ClockReset>
-          </ClockReset>
-          <Label>
-            <Position X="2.085" Y="2.015" Width="0.25" />
-          </Label>
-        </Link>
-      </Links>
-    </Process>
-  </Network>
+   <Network ChannelMaxBufferSize="5" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5">
+      <Process>
+         <Sensors>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="15" MaxSendingRate="2" Name="Sensor 31" SType="3" id="31">
+               <Position X="8.18" Y="3.91" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="7" MaxSendingRate="5" Name="Sensor 36" SType="3" id="36">
+               <Position X="8.19" Y="6.81" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="4" MaxSendingRate="12" Name="Sensor 59" SType="3" id="59">
+               <Position X="7.97" Y="3.85" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="15" MaxSendingRate="11" Name="Sensor 69" SType="3" id="69">
+               <Position X="7.44" Y="4.68" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="7" MaxSendingRate="4" Name="Sensor 94" SType="3" id="94">
+               <Position X="8.16" Y="5.50" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="3" MaxSendingRate="3" Name="Sensor 99" SType="3" id="99">
+               <Position X="5.42" Y="3.68" />
+            </Sensor>
+         </Sensors>
+         <Links>
+            <Link MaxSendingRate="3" id="94_36">
+               <From>Sensor 94</From>
+               <To>Sensor 36</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="59_69">
+               <From>Sensor 59</From>
+               <To>Sensor 69</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="94_59">
+               <From>Sensor 94</From>
+               <To>Sensor 59</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="69_99">
+               <From>Sensor 69</From>
+               <To>Sensor 99</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="31_94">
+               <From>Sensor 31</From>
+               <To>Sensor 94</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+         </Links>
+      </Process>
+   </Network>
 </WSN>

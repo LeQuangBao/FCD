@@ -17,22 +17,25 @@ public class CreateNewCluster {
 	private Sensor sink;
 	private Channel sourceChannel;
 	private Channel sinkChannel;
-	private final String wsnPATH = "input\\WSN\\file-kwsn\\wsn.kwsn";
-	private final String inPATH = "input\\WSN\\dense-cluster\\";
-	private final String outPATH = "output\\";
+	private final String IN_WSN_PATH = "input\\WSN\\file-kwsn\\WSN-topology.kwsn";
+	private final String IN_DENSE_PATH = "input\\WSN\\dense-cluster\\";
+	private final String IN_IMBALANCE_PATH = "input\\WSN\\imbalanced-cluster\\";
+	private final String OUT_DENSE_PATH = "output\\WSN\\dense-cluster\\";
+	private final String OUT_IMBALANCE_PATH = "output\\WSN\\imbalanced-cluster\\";
 	
 	public void autoCreateNewCluster() {
-		int index = 0;
+		int index = 1;
 		String fileName;
 		File file;;
 		
+		// Auto Create for Dense Cluster
 		while (true) {
-			fileName = "cluster" + index + ".kwsn";
-			file = new File(inPATH+fileName);
-			System.out.println("Processing: " + inPATH + fileName);
+			fileName = "Cluster" + index + ".kwsn";
+			file = new File(IN_DENSE_PATH+fileName);
 			if (file.exists()) {
 				try {
-					action(fileName);
+					System.out.println("Processing: " + IN_DENSE_PATH + fileName);
+					action(IN_DENSE_PATH , fileName);
 					System.out.println("\tProcessed Successfully!");
 					index++;
 				} catch(Exception ex) {
@@ -43,20 +46,41 @@ public class CreateNewCluster {
 				break;
 			}
 		}
+		
+		index = 1;
+		
+		// Auto Create for Imbalance Cluster
+				while (true) {
+					fileName = "Cluster" + index + ".kwsn";
+					file = new File(IN_IMBALANCE_PATH+fileName);					
+					if (file.exists()) {
+						try {
+							System.out.println("Processing: " + IN_IMBALANCE_PATH + fileName);
+							action(IN_IMBALANCE_PATH , fileName);
+							System.out.println("\tProcessed Successfully!");
+							index++;
+						} catch(Exception ex) {
+							System.out.println("\tProcess Failed!\t"+ex);
+							break;
+						}
+					} else {
+						break;
+					}
+				}
 	}
 	
-	public void action(String fileName) {
-		initializeData(inPATH + fileName);
+	public void action(String path, String fileName) {
+		initializeData(path, fileName);
 		findSourceSink();
 		findChannelForSourceSink();
-		createWSNFile(fileName);
+		createWSNFile(path, fileName);
 	}
 	
-	private void initializeData(String clusterPath) {
+	private void initializeData(String path, String fileName) {
 		ReadXMLFile reader = new ReadXMLFile();
 		
-		wsn = reader.readFile(wsnPATH);
-		cluster = reader.readFile(clusterPath);
+		wsn = reader.readFile(IN_WSN_PATH);
+		cluster = reader.readFile(path + fileName);
 	}
 		
 	public void findSourceSink() {
@@ -127,11 +151,19 @@ public class CreateNewCluster {
 				}
 			}
 		}
+		
+		for (Sensor sensor : cluster.getSensors()) {
+			sourceChannel.setSecondSensor(sensor);
+			sinkChannel.setFirstSensor(sensor);
+			
+			break;
+		}
+		
 		sourceChannel.setFirstSensor(source);
 		sinkChannel.setSecondSensor(sink);
 	}
 	
-	private void createWSNFile(String fileName) {
+	private void createWSNFile(String path, String fileName) {
 		HashSet<Sensor> sensors = cluster.getSensors();
 		sensors.add(source);
 		sensors.add(sink);
@@ -143,7 +175,11 @@ public class CreateNewCluster {
 		cluster.setSensors(sensors);
 		cluster.setChannels(channels);
 		
-		WriteXMLFile.write(cluster, outPATH + fileName);
+		if (path.indexOf("dense") > 0) {
+			WriteXMLFile.write(cluster, OUT_DENSE_PATH + fileName);
+		} else {
+			WriteXMLFile.write(cluster, OUT_IMBALANCE_PATH + fileName);
+		}		
 	}
 	
 	private void selectCapableSourcesSinks() {
