@@ -154,7 +154,7 @@ public class WriteXMLFile {
 			DOMSource source = new DOMSource(doc);
 			StreamResult result = null;
 			if (path == "") {
-				result = new StreamResult(new File("output\\file.kwsn"));
+				result = new StreamResult(new File("Input\\Test\\NewWSN\\result.kwsn\\file.kwsn"));
 			} else {
 				result = new StreamResult(new File(path));
 			}

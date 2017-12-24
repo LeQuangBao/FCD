@@ -15,7 +15,7 @@ public class Main
 {
 	public static void main(String[] args) throws Exception 
 	{	
-		File aDirectory = new File("Input\\");
+		File aDirectory = new File("Input\\Test\\Cluster");
 
 	    String[] filesInDir = aDirectory.list();
 	    boolean flag = true;
@@ -36,22 +36,23 @@ public class Main
 	    	}
 	    }
 	    if(!flag) {
+	    	File aDirectory2 = new File("Input\\Test\\");
 	    	ReadXMLFile readXMLFile = new ReadXMLFile();
-	    	String patch = aDirectory.getPath();
+	    	String patch = aDirectory2.getPath()+"\\WSN-topology.kwsn";
 	    	WSN result = null;
 	    	WSN original =readXMLFile.readFile(patch);
 	    	
 	    	String[] filesInDir2 = aDirectory.list();
 		    for ( int i=0; i<filesInDir2.length; i++ )
 		    {
-		    	String patch2 = aDirectory.getPath()+"\\"+filesInDir[i];
+		    	String patch2 = aDirectory2.getPath()+"\\Cluster\\"+filesInDir[i];
 		    	WSN cluster = readXMLFile.readFile(patch2);
 		    	result = gatherNetwork(original, cluster);
 		    	original=result;
 		    }
-		    WriteXMLFile.write(result, "Input\\WSN\\result.kwsn");
+		    WriteXMLFile.write(result, "Input\\Test\\NewWSN\\result.kwsn");
 		    
-		    String patch3 = aDirectory.getPath()+"\\WSN\\result.kwsn";
+		    String patch3 = aDirectory2.getPath()+"\\NewWSN\\result.kwsn";
 	    	DataImport readKwsn = new DataImport();
 			readKwsn.Import(patch3);
 			String pnmlFile = "temp/temp.pnml";
