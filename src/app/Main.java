@@ -13,10 +13,10 @@ import util.WriteXMLFile;
 
 public class Main {
 	public static void main(String[] args) {
+		CreateNewCluster creation = new CreateNewCluster();
+		creation.autoCreateNewCluster();
 		buildTopology();
-//		step0();
-//		CreateNewCluster creation = new CreateNewCluster();
-//		creation.autoCreateNewCluster();
+		step0();
 	}
 	
 	public static void step0() {
@@ -31,13 +31,13 @@ public class Main {
 	public static void buildTopology() {
 		ReadXMLFile readXMLFile = new ReadXMLFile();
 		
-		WSN original = readXMLFile.readFile("input\\WSN\\original.kwsn");
-		WSN cluster = readXMLFile.readFile("input\\WSN\\cluster1.kwsn");
+		WSN original = readXMLFile.readFile("input\\WSN\\file-kwsn\\WSN-topology.kwsn");
+		WSN cluster = readXMLFile.readFile("input\\WSN\\dense-cluster\\Cluster1.kwsn");
 		WSN result = gatherNetwork(original, cluster);
-		cluster = readXMLFile.readFile("input\\WSN\\cluster2.kwsn");
+		cluster = readXMLFile.readFile("input\\WSN\\dense-cluster\\Cluster2.kwsn");
 		result = gatherNetwork(result, cluster);
 		
-		WriteXMLFile.write(result, "input\\WSN\\result.kwsn");
+		WriteXMLFile.write(result, "output\\WSN\\result.kwsn");
 	}
 	
 	public static WSN gatherNetwork(WSN original, WSN cluster) {

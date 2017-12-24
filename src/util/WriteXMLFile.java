@@ -49,6 +49,8 @@ public class WriteXMLFile {
 			Attr attr3 = doc.createAttribute("SensorMaxBufferSize");
 			Attr attr4 = doc.createAttribute("SensorMaxQueueSize");
 			Attr attr5 = doc.createAttribute("ChannelMaxBufferSize");
+			Attr attr6 = doc.createAttribute("Energy");
+			Attr attr7 = doc.createAttribute("Token");
 			
 			attr.setValue(network.getId());			
 			attr1.setValue(Integer.toString(network.getNumberOfSensors()));
@@ -94,18 +96,24 @@ public class WriteXMLFile {
 				attr3 = doc.createAttribute("id");
 				attr4 = doc.createAttribute("MaxSendingRate");
 				attr5 = doc.createAttribute("MaxProcessingRate");
+				attr6 = doc.createAttribute("Energy");
+				attr7 = doc.createAttribute("Token");
 				attr.setValue(s.getName());			
 				attr1.setValue(Boolean.toString(s.isInit()));
 				attr2.setValue(Integer.toString(s.getsType()));
 				attr3.setValue(s.getId());
 				attr4.setValue(Integer.toString(s.getMaxSendingRate()));
 				attr5.setValue(Integer.toString(s.getMaxProcessingRate()));
+				attr6.setValue("10.0");
+				attr7.setValue("1");
 				eSensor.setAttributeNode(attr);
 				eSensor.setAttributeNode(attr1);
 				eSensor.setAttributeNode(attr2);
 				eSensor.setAttributeNode(attr3);
 				eSensor.setAttributeNode(attr4);
 				eSensor.setAttributeNode(attr5);
+				eSensor.setAttributeNode(attr6);
+				eSensor.setAttributeNode(attr7);
 				eSensors.appendChild(eSensor);
 				
 				Element ePosition = doc.createElement("Position");

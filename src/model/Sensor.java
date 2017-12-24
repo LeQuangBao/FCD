@@ -13,7 +13,7 @@ public class Sensor {
 	// 2: Sink
 	// 3: Intermediate
 	int sType;
-
+	
 	int maxSendingRate;
 	int maxProcessingRate;
 	int maxBufferSize;
