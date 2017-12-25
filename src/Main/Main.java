@@ -19,7 +19,7 @@ public class Main
 		boolean flag =VerifyInput();
 	    if(!flag) {
 	    	buildTopology();
-		    String patch ="\\NewWSN\\result.kwsn";
+		    String patch ="NewKWNS\\New-WSN-topology.kwsn";
 	    	DataImport readKwsn = new DataImport();
 			readKwsn.Import(patch);
 			String pnmlFile = "temp/temp.pnml";
@@ -33,20 +33,23 @@ public class Main
 	
 	public static Boolean VerifyInput() throws Exception
 	{
-		CreateNewCluster creation = new CreateNewCluster();
-		creation.autoCreateNewCluster();
+		//CreateNewCluster creation = new CreateNewCluster();
+		//creation.autoCreateNewCluster();
 		
-		File Directory = new File("Output\\WSN\\");
 		String DENSE_PATH = "dense-cluster";
 		String IMBALANCE_PATH = "imbalanced-cluster";
+		//File DENSE_Directory = new File("Output\\WSN\\"+DENSE_PATH);
+		//File IMBALANCE_Directory = new File("Output\\WSN\\"+IMBALANCE_PATH);
+		File DENSE_Directory = new File("Input\\WSN\\"+DENSE_PATH);
+		File IMBALANCE_Directory = new File("Input\\WSN\\"+IMBALANCE_PATH);
 		
 		
-	    String[] filesInDir = Directory.list();
+	    String[] filesInDir = DENSE_Directory.list();
 	    boolean flag = true;
 	    for ( int i=0; i<filesInDir.length; i++ )
 	    {
 	    	
-	    	String patch = Directory.getPath()+"\\"+DENSE_PATH+"\\"+filesInDir[i];
+	    	String patch = DENSE_Directory.getPath()+"\\"+filesInDir[i];
 	    	DataImport readKwsn = new DataImport();
 			readKwsn.Import(patch);
 			String pnmlFile = "temp/temp.pnml";
@@ -59,10 +62,11 @@ public class Main
 	    		return true;
 	    	}
 	    }
+	    filesInDir = IMBALANCE_Directory.list();
 	    for ( int i=0; i<filesInDir.length; i++ )
 	    {
 	    	
-	    	String patch = Directory.getPath()+"\\"+IMBALANCE_PATH+"\\"+filesInDir[i];
+	    	String patch = IMBALANCE_Directory.getPath()+"\\"+filesInDir[i];
 	    	DataImport readKwsn = new DataImport();
 			readKwsn.Import(patch);
 			String pnmlFile = "temp/temp.pnml";
@@ -79,27 +83,30 @@ public class Main
 	}
 	public static void buildTopology()
 	{
-		File Directory = new File("Intput\\WSN\\");
+		File Directory = new File("Input\\WSN\\");
     	ReadXMLFile readXMLFile = new ReadXMLFile();
     	String originalPatch = Directory.getPath()+"\\file-kwsn\\WSN-topology.kwsn";
     	WSN original =readXMLFile.readFile(originalPatch);
     	
     	WSN result = null;
     	
-    	 String DENSE_PATH = "dense-cluster";
-    	 String IMBALANCE_PATH = "imbalanced-cluster";
+    	String DENSE_PATH = "dense-cluster";
+    	String IMBALANCE_PATH = "imbalanced-cluster";
+    	File DENSE_Directory = new File("Input\\WSN\\"+DENSE_PATH);
+    	File IMBALANCE_Directory = new File("Input\\WSN\\"+IMBALANCE_PATH);
     	 
-    	String[] filesInDir = Directory.list();
+    	String[] filesInDir = DENSE_Directory.list();
 	    for ( int i=0; i<filesInDir.length; i++ )
 	    {
-	    	String clusterPatch = Directory.getPath()+"\\"+DENSE_PATH+"\\"+filesInDir[i];
+	    	String clusterPatch = DENSE_Directory.getPath()+"\\"+filesInDir[i];
 	    	WSN cluster = readXMLFile.readFile(clusterPatch);
 	    	result = gatherNetwork(original, cluster);
 	    	original=result;
 	    }
+	    filesInDir = IMBALANCE_Directory.list();
 	    for ( int i=0; i<filesInDir.length; i++ )
 	    {
-	    	String clusterPatch = Directory.getPath()+"\\"+IMBALANCE_PATH+"\\"+filesInDir[i];
+	    	String clusterPatch = IMBALANCE_Directory.getPath()+"\\"+filesInDir[i];
 	    	WSN cluster = readXMLFile.readFile(clusterPatch);
 	    	result = gatherNetwork(original, cluster);
 	    	original=result;

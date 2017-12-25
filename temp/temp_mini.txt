@@ -1,0 +1,1055 @@
+boolean CONGESTION = false;
+const int SENSOR_MAX_BUFFER_SIZE = 1;
+const int SENSOR_MAX_QUEUE_SIZE = 1;
+const int SENSOR_MAX_PROCESSING_RATE = 1;
+const int SENSOR_MAX_SENDING_RATE = 1;
+const int CHANNEL_MAX_BUFFER_SIZE = 1;
+const int CHANNEL_MAX_SENDING_RATE = 1;
+int NUMBER_OF_PACKAGE = 1;
+const int SENSOR_MIN_SENDING_RATE = 1;
+const int SENSOR_MIN_PROCESSING_RATE = 1;
+const int CHANEL_MIN_SENDING_RATE = 1;
+int Buffer_3 = 0;
+int Queue_3 = 0;
+float energy_3 = 1;
+int Buffer_26 = 0;
+int Queue_26 = 0;
+float energy_26 = 1;
+int Buffer_30 = 0;
+int Queue_30 = 0;
+float energy_30 = 1;
+int Buffer_18 = 0;
+int Queue_18 = 0;
+float energy_18 = 1;
+int Buffer_2 = 0;
+int Queue_2 = 0;
+float energy_2 = 1;
+int Buffer_5 = 0;
+int Queue_5 = 0;
+float energy_5 = 1;
+int Buffer_19 = 0;
+int Queue_19 = 0;
+float energy_19 = 1;
+int Buffer_22 = 0;
+int Queue_22 = 0;
+float energy_22 = 1;
+int Buffer_4 = 0;
+int Queue_4 = 0;
+float energy_4 = 1;
+int Buffer_29 = 0;
+int Queue_29 = 0;
+float energy_29 = 1;
+int Buffer_6 = 0;
+int Queue_6 = 0;
+float energy_6 = 1;
+int Buffer_14 = 0;
+int Queue_14 = 0;
+float energy_14 = 1;
+int Buffer_7 = 0;
+int Queue_7 = 0;
+float energy_7 = 1;
+int Buffer_13 = 0;
+int Queue_13 = 0;
+float energy_13 = 1;
+int Buffer_28 = 0;
+int Queue_28 = 0;
+float energy_28 = 1;
+int Buffer_1 = 0;
+int Queue_1 = 0;
+float energy_1 = 1;
+int Buffer_8 = 0;
+int Queue_8 = 0;
+float energy_8 = 1;
+int Buffer_20 = 0;
+int Queue_20 = 0;
+float energy_20 = 1;
+int Buffer_10 = 0;
+int Queue_10 = 0;
+float energy_10 = 1;
+int Buffer_9 = 0;
+int Queue_9 = 0;
+float energy_9 = 1;
+int Buffer_12 = 0;
+int Queue_12 = 0;
+float energy_12 = 1;
+int Buffer_24 = 0;
+int Queue_24 = 0;
+float energy_24 = 1;
+int Buffer_11 = 0;
+int Queue_11 = 0;
+float energy_11 = 1;
+int Buffer_27 = 0;
+int Queue_27 = 0;
+float energy_27 = 1;
+int Channel_Buffer_2_1 = 0;
+int Channel_Buffer_29_2 = 0;
+int Channel_Buffer_9_14 = 0;
+int Channel_Buffer_7_27 = 0;
+int Channel_Buffer_27_10 = 0;
+int Channel_Buffer_13_9 = 0;
+int Channel_Buffer_19_5 = 0;
+int Channel_Buffer_30_11 = 0;
+int Channel_Buffer_11_2 = 0;
+int Channel_Buffer_3_14 = 0;
+int Channel_Buffer_1_18 = 0;
+int Channel_Buffer_24_2 = 0;
+int Channel_Buffer_22_11 = 0;
+int Channel_Buffer_8_11 = 0;
+int Channel_Buffer_26_26 = 0;
+int Channel_Buffer_12_5 = 0;
+int Channel_Buffer_6_3 = 0;
+main {
+search(CONGESTION);
+}
+
+
+int_send_3 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_3 >= random) {
+Buffer_3 = Buffer_3 - random;
+}
+else {
+random = Buffer_3;
+Buffer_3 = 0;
+}Queue_3 = Queue_3 + random;
+if (Queue_3 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_3 = energy_3 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_26 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_26 >= random) {
+Buffer_26 = Buffer_26 - random;
+}
+else {
+random = Buffer_26;
+Buffer_26 = 0;
+}Queue_26 = Queue_26 + random;
+if (Queue_26 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_26 = energy_26 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_30 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_30 >= random) {
+Buffer_30 = Buffer_30 - random;
+}
+else {
+random = Buffer_30;
+Buffer_30 = 0;
+}Queue_30 = Queue_30 + random;
+if (Queue_30 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_30 = energy_30 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_18 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_18 >= random) {
+Buffer_18 = Buffer_18 - random;
+}
+else {
+random = Buffer_18;
+Buffer_18 = 0;
+}Queue_18 = Queue_18 + random;
+if (Queue_18 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_18 = energy_18 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_2 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_2 >= random) {
+Buffer_2 = Buffer_2 - random;
+}
+else {
+random = Buffer_2;
+Buffer_2 = 0;
+}Queue_2 = Queue_2 + random;
+if (Queue_2 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_2 = energy_2 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_5 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_5 >= random) {
+Buffer_5 = Buffer_5 - random;
+}
+else {
+random = Buffer_5;
+Buffer_5 = 0;
+}Queue_5 = Queue_5 + random;
+if (Queue_5 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_5 = energy_5 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_19 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_19 >= random) {
+Buffer_19 = Buffer_19 - random;
+}
+else {
+random = Buffer_19;
+Buffer_19 = 0;
+}Queue_19 = Queue_19 + random;
+if (Queue_19 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_19 = energy_19 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_22 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_22 >= random) {
+Buffer_22 = Buffer_22 - random;
+}
+else {
+random = Buffer_22;
+Buffer_22 = 0;
+}Queue_22 = Queue_22 + random;
+if (Queue_22 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_22 = energy_22 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_4 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_4 >= random) {
+Buffer_4 = Buffer_4 - random;
+}
+else {
+random = Buffer_4;
+Buffer_4 = 0;
+}Queue_4 = Queue_4 + random;
+if (Queue_4 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_4 = energy_4 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_29 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_29 >= random) {
+Buffer_29 = Buffer_29 - random;
+}
+else {
+random = Buffer_29;
+Buffer_29 = 0;
+}Queue_29 = Queue_29 + random;
+if (Queue_29 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_29 = energy_29 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_6 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_6 >= random) {
+Buffer_6 = Buffer_6 - random;
+}
+else {
+random = Buffer_6;
+Buffer_6 = 0;
+}Queue_6 = Queue_6 + random;
+if (Queue_6 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_6 = energy_6 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_14 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_14 >= random) {
+Buffer_14 = Buffer_14 - random;
+}
+else {
+random = Buffer_14;
+Buffer_14 = 0;
+}Queue_14 = Queue_14 + random;
+if (Queue_14 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_14 = energy_14 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_7 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_7 >= random) {
+Buffer_7 = Buffer_7 - random;
+}
+else {
+random = Buffer_7;
+Buffer_7 = 0;
+}Queue_7 = Queue_7 + random;
+if (Queue_7 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_7 = energy_7 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_13 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_13 >= random) {
+Buffer_13 = Buffer_13 - random;
+}
+else {
+random = Buffer_13;
+Buffer_13 = 0;
+}Queue_13 = Queue_13 + random;
+if (Queue_13 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_13 = energy_13 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_28 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_28 >= random) {
+Buffer_28 = Buffer_28 - random;
+}
+else {
+random = Buffer_28;
+Buffer_28 = 0;
+}Queue_28 = Queue_28 + random;
+if (Queue_28 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_28 = energy_28 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_1 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_1 >= random) {
+Buffer_1 = Buffer_1 - random;
+}
+else {
+random = Buffer_1;
+Buffer_1 = 0;
+}Queue_1 = Queue_1 + random;
+if (Queue_1 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_1 = energy_1 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_8 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_8 >= random) {
+Buffer_8 = Buffer_8 - random;
+}
+else {
+random = Buffer_8;
+Buffer_8 = 0;
+}Queue_8 = Queue_8 + random;
+if (Queue_8 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_8 = energy_8 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_20 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_20 >= random) {
+Buffer_20 = Buffer_20 - random;
+}
+else {
+random = Buffer_20;
+Buffer_20 = 0;
+}Queue_20 = Queue_20 + random;
+if (Queue_20 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_20 = energy_20 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_10 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_10 >= random) {
+Buffer_10 = Buffer_10 - random;
+}
+else {
+random = Buffer_10;
+Buffer_10 = 0;
+}Queue_10 = Queue_10 + random;
+if (Queue_10 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_10 = energy_10 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_9 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_9 >= random) {
+Buffer_9 = Buffer_9 - random;
+}
+else {
+random = Buffer_9;
+Buffer_9 = 0;
+}Queue_9 = Queue_9 + random;
+if (Queue_9 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_9 = energy_9 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_12 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_12 >= random) {
+Buffer_12 = Buffer_12 - random;
+}
+else {
+random = Buffer_12;
+Buffer_12 = 0;
+}Queue_12 = Queue_12 + random;
+if (Queue_12 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_12 = energy_12 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_24 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_24 >= random) {
+Buffer_24 = Buffer_24 - random;
+}
+else {
+random = Buffer_24;
+Buffer_24 = 0;
+}Queue_24 = Queue_24 + random;
+if (Queue_24 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_24 = energy_24 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_11 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_11 >= random) {
+Buffer_11 = Buffer_11 - random;
+}
+else {
+random = Buffer_11;
+Buffer_11 = 0;
+}Queue_11 = Queue_11 + random;
+if (Queue_11 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_11 = energy_11 - randomFloat(0.1, 0.2);
+}
+
+
+int_send_27 {
+int random = randomInt(SENSOR_MIN_SENDING_RATE, SENSOR_MAX_SENDING_RATE);
+if (Buffer_27 >= random) {
+Buffer_27 = Buffer_27 - random;
+}
+else {
+random = Buffer_27;
+Buffer_27 = 0;
+}Queue_27 = Queue_27 + random;
+if (Queue_27 > SENSOR_MAX_QUEUE_SIZE) {
+CONGESTION = true;
+}
+energy_27 = energy_27 - randomFloat(0.1, 0.2);
+}
+
+
+Channel_recv_2_1 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_2 >= random) {
+Queue_2 = Queue_2 - random;
+}
+else {
+random = Queue_2;
+Queue_2 = 0;
+}Channel_Buffer_2_1 = Channel_Buffer_2_1 + random;
+if (Channel_Buffer_2_1 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_2_1 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_2_1 >= random) {
+Channel_Buffer_2_1 = Channel_Buffer_2_1 - random;
+}
+else {
+random = Channel_Buffer_2_1;
+Channel_Buffer_2_1 = 0;
+}Buffer_1 = Buffer_1 + random;
+if (Buffer_1 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_29_2 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_29 >= random) {
+Queue_29 = Queue_29 - random;
+}
+else {
+random = Queue_29;
+Queue_29 = 0;
+}Channel_Buffer_29_2 = Channel_Buffer_29_2 + random;
+if (Channel_Buffer_29_2 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_29_2 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_29_2 >= random) {
+Channel_Buffer_29_2 = Channel_Buffer_29_2 - random;
+}
+else {
+random = Channel_Buffer_29_2;
+Channel_Buffer_29_2 = 0;
+}Buffer_2 = Buffer_2 + random;
+if (Buffer_2 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_4 = Buffer_4 + random;
+if (Buffer_4 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_9_14 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_9 >= random) {
+Queue_9 = Queue_9 - random;
+}
+else {
+random = Queue_9;
+Queue_9 = 0;
+}Channel_Buffer_9_14 = Channel_Buffer_9_14 + random;
+if (Channel_Buffer_9_14 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_9_14 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_9_14 >= random) {
+Channel_Buffer_9_14 = Channel_Buffer_9_14 - random;
+}
+else {
+random = Channel_Buffer_9_14;
+Channel_Buffer_9_14 = 0;
+}Buffer_14 = Buffer_14 + random;
+if (Buffer_14 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_6 = Buffer_6 + random;
+if (Buffer_6 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_7 = Buffer_7 + random;
+if (Buffer_7 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_20 = Buffer_20 + random;
+if (Buffer_20 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_7_27 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_7 >= random) {
+Queue_7 = Queue_7 - random;
+}
+else {
+random = Queue_7;
+Queue_7 = 0;
+}Channel_Buffer_7_27 = Channel_Buffer_7_27 + random;
+if (Channel_Buffer_7_27 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_7_27 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_7_27 >= random) {
+Channel_Buffer_7_27 = Channel_Buffer_7_27 - random;
+}
+else {
+random = Channel_Buffer_7_27;
+Channel_Buffer_7_27 = 0;
+}Buffer_27 = Buffer_27 + random;
+if (Buffer_27 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_4 = Buffer_4 + random;
+if (Buffer_4 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_27_10 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_27 >= random) {
+Queue_27 = Queue_27 - random;
+}
+else {
+random = Queue_27;
+Queue_27 = 0;
+}Channel_Buffer_27_10 = Channel_Buffer_27_10 + random;
+if (Channel_Buffer_27_10 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_27_10 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_27_10 >= random) {
+Channel_Buffer_27_10 = Channel_Buffer_27_10 - random;
+}
+else {
+random = Channel_Buffer_27_10;
+Channel_Buffer_27_10 = 0;
+}Buffer_10 = Buffer_10 + random;
+if (Buffer_10 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_12 = Buffer_12 + random;
+if (Buffer_12 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_1 = Buffer_1 + random;
+if (Buffer_1 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_13_9 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_13 >= random) {
+Queue_13 = Queue_13 - random;
+}
+else {
+random = Queue_13;
+Queue_13 = 0;
+}Channel_Buffer_13_9 = Channel_Buffer_13_9 + random;
+if (Channel_Buffer_13_9 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_13_9 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_13_9 >= random) {
+Channel_Buffer_13_9 = Channel_Buffer_13_9 - random;
+}
+else {
+random = Channel_Buffer_13_9;
+Channel_Buffer_13_9 = 0;
+}Buffer_9 = Buffer_9 + random;
+if (Buffer_9 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_19_5 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_19 >= random) {
+Queue_19 = Queue_19 - random;
+}
+else {
+random = Queue_19;
+Queue_19 = 0;
+}Channel_Buffer_19_5 = Channel_Buffer_19_5 + random;
+if (Channel_Buffer_19_5 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_19_5 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_19_5 >= random) {
+Channel_Buffer_19_5 = Channel_Buffer_19_5 - random;
+}
+else {
+random = Channel_Buffer_19_5;
+Channel_Buffer_19_5 = 0;
+}Buffer_5 = Buffer_5 + random;
+if (Buffer_5 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_30_11 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_30 >= random) {
+Queue_30 = Queue_30 - random;
+}
+else {
+random = Queue_30;
+Queue_30 = 0;
+}Channel_Buffer_30_11 = Channel_Buffer_30_11 + random;
+if (Channel_Buffer_30_11 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_30_11 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_30_11 >= random) {
+Channel_Buffer_30_11 = Channel_Buffer_30_11 - random;
+}
+else {
+random = Channel_Buffer_30_11;
+Channel_Buffer_30_11 = 0;
+}Buffer_11 = Buffer_11 + random;
+if (Buffer_11 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_26 = Buffer_26 + random;
+if (Buffer_26 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_11_2 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_11 >= random) {
+Queue_11 = Queue_11 - random;
+}
+else {
+random = Queue_11;
+Queue_11 = 0;
+}Channel_Buffer_11_2 = Channel_Buffer_11_2 + random;
+if (Channel_Buffer_11_2 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_11_2 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_11_2 >= random) {
+Channel_Buffer_11_2 = Channel_Buffer_11_2 - random;
+}
+else {
+random = Channel_Buffer_11_2;
+Channel_Buffer_11_2 = 0;
+}Buffer_2 = Buffer_2 + random;
+if (Buffer_2 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_26 = Buffer_26 + random;
+if (Buffer_26 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_18 = Buffer_18 + random;
+if (Buffer_18 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_3_14 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_3 >= random) {
+Queue_3 = Queue_3 - random;
+}
+else {
+random = Queue_3;
+Queue_3 = 0;
+}Channel_Buffer_3_14 = Channel_Buffer_3_14 + random;
+if (Channel_Buffer_3_14 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_3_14 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_3_14 >= random) {
+Channel_Buffer_3_14 = Channel_Buffer_3_14 - random;
+}
+else {
+random = Channel_Buffer_3_14;
+Channel_Buffer_3_14 = 0;
+}Buffer_14 = Buffer_14 + random;
+if (Buffer_14 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_29 = Buffer_29 + random;
+if (Buffer_29 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_9 = Buffer_9 + random;
+if (Buffer_9 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_1_18 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_1 >= random) {
+Queue_1 = Queue_1 - random;
+}
+else {
+random = Queue_1;
+Queue_1 = 0;
+}Channel_Buffer_1_18 = Channel_Buffer_1_18 + random;
+if (Channel_Buffer_1_18 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_1_18 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_1_18 >= random) {
+Channel_Buffer_1_18 = Channel_Buffer_1_18 - random;
+}
+else {
+random = Channel_Buffer_1_18;
+Channel_Buffer_1_18 = 0;
+}Buffer_18 = Buffer_18 + random;
+if (Buffer_18 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_24_2 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_24 >= random) {
+Queue_24 = Queue_24 - random;
+}
+else {
+random = Queue_24;
+Queue_24 = 0;
+}Channel_Buffer_24_2 = Channel_Buffer_24_2 + random;
+if (Channel_Buffer_24_2 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_24_2 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_24_2 >= random) {
+Channel_Buffer_24_2 = Channel_Buffer_24_2 - random;
+}
+else {
+random = Channel_Buffer_24_2;
+Channel_Buffer_24_2 = 0;
+}Buffer_2 = Buffer_2 + random;
+if (Buffer_2 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_22_11 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_22 >= random) {
+Queue_22 = Queue_22 - random;
+}
+else {
+random = Queue_22;
+Queue_22 = 0;
+}Channel_Buffer_22_11 = Channel_Buffer_22_11 + random;
+if (Channel_Buffer_22_11 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_22_11 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_22_11 >= random) {
+Channel_Buffer_22_11 = Channel_Buffer_22_11 - random;
+}
+else {
+random = Channel_Buffer_22_11;
+Channel_Buffer_22_11 = 0;
+}Buffer_11 = Buffer_11 + random;
+if (Buffer_11 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_8_11 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_8 >= random) {
+Queue_8 = Queue_8 - random;
+}
+else {
+random = Queue_8;
+Queue_8 = 0;
+}Channel_Buffer_8_11 = Channel_Buffer_8_11 + random;
+if (Channel_Buffer_8_11 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_8_11 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_8_11 >= random) {
+Channel_Buffer_8_11 = Channel_Buffer_8_11 - random;
+}
+else {
+random = Channel_Buffer_8_11;
+Channel_Buffer_8_11 = 0;
+}Buffer_11 = Buffer_11 + random;
+if (Buffer_11 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_9 = Buffer_9 + random;
+if (Buffer_9 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_26_26 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_26 >= random) {
+Queue_26 = Queue_26 - random;
+}
+else {
+random = Queue_26;
+Queue_26 = 0;
+}Channel_Buffer_26_26 = Channel_Buffer_26_26 + random;
+if (Channel_Buffer_26_26 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_26_26 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_26_26 >= random) {
+Channel_Buffer_26_26 = Channel_Buffer_26_26 - random;
+}
+else {
+random = Channel_Buffer_26_26;
+Channel_Buffer_26_26 = 0;
+}Buffer_26 = Buffer_26 + random;
+if (Buffer_26 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+Buffer_11 = Buffer_11 + random;
+if (Buffer_11 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_12_5 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_12 >= random) {
+Queue_12 = Queue_12 - random;
+}
+else {
+random = Queue_12;
+Queue_12 = 0;
+}Channel_Buffer_12_5 = Channel_Buffer_12_5 + random;
+if (Channel_Buffer_12_5 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_12_5 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_12_5 >= random) {
+Channel_Buffer_12_5 = Channel_Buffer_12_5 - random;
+}
+else {
+random = Channel_Buffer_12_5;
+Channel_Buffer_12_5 = 0;
+}Buffer_5 = Buffer_5 + random;
+if (Buffer_5 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_recv_6_3 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Queue_6 >= random) {
+Queue_6 = Queue_6 - random;
+}
+else {
+random = Queue_6;
+Queue_6 = 0;
+}Channel_Buffer_6_3 = Channel_Buffer_6_3 + random;
+if (Channel_Buffer_6_3 > CHANNEL_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
+Channel_send_6_3 {
+int random = randomInt(CHANEL_MIN_SENDING_RATE, CHANNEL_MAX_SENDING_RATE);
+if (Channel_Buffer_6_3 >= random) {
+Channel_Buffer_6_3 = Channel_Buffer_6_3 - random;
+}
+else {
+random = Channel_Buffer_6_3;
+Channel_Buffer_6_3 = 0;
+}Buffer_3 = Buffer_3 + random;
+if (Buffer_3 > SENSOR_MAX_BUFFER_SIZE) {
+CONGESTION = true;
+}
+}
+
+
