@@ -1,7 +1,10 @@
 package Main;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
+
+import org.apache.commons.io.FileUtils;
 
 import Editor.DataImport;
 import Editor.Verify;
@@ -16,9 +19,14 @@ public class Main
 {
 	public static void main(String[] args) throws Exception 
 	{	
+		RemoveOldFile();
 		boolean flag =VerifyInput();
 	    if(!flag) {
 	    	buildTopology();
+	    	
+	    	File temp_Directory = new File("temp\\");
+	    	FileUtils.cleanDirectory(temp_Directory);
+	    	
 		    String patch ="NewKWNS\\New-WSN-topology.kwsn";
 	    	DataImport readKwsn = new DataImport();
 			readKwsn.Import(patch);
@@ -31,23 +39,37 @@ public class Main
 	    }
 	}
 	
+	public static void RemoveOldFile() throws IOException {
+		String DENSE_PATH = "dense-cluster";
+		String IMBALANCE_PATH = "imbalanced-cluster";
+		File DENSE_Directory = new File("Output\\WSN\\"+DENSE_PATH);
+		File IMBALANCE_Directory = new File("Output\\WSN\\"+IMBALANCE_PATH);
+		File NewKWNS_Directory = new File("NewKWNS\\");
+		
+		FileUtils.cleanDirectory(DENSE_Directory);
+		FileUtils.cleanDirectory(IMBALANCE_Directory);
+		FileUtils.cleanDirectory(NewKWNS_Directory);
+	}
+	
 	public static Boolean VerifyInput() throws Exception
 	{
-		//CreateNewCluster creation = new CreateNewCluster();
-		//creation.autoCreateNewCluster();
+		CreateNewCluster creation = new CreateNewCluster();
+		creation.autoCreateNewCluster();
 		
 		String DENSE_PATH = "dense-cluster";
 		String IMBALANCE_PATH = "imbalanced-cluster";
-		//File DENSE_Directory = new File("Output\\WSN\\"+DENSE_PATH);
-		//File IMBALANCE_Directory = new File("Output\\WSN\\"+IMBALANCE_PATH);
-		File DENSE_Directory = new File("Input\\WSN\\"+DENSE_PATH);
-		File IMBALANCE_Directory = new File("Input\\WSN\\"+IMBALANCE_PATH);
+		File DENSE_Directory = new File("Output\\WSN\\"+DENSE_PATH);
+		File IMBALANCE_Directory = new File("Output\\WSN\\"+IMBALANCE_PATH);
+		//File DENSE_Directory = new File("Input\\WSN\\"+DENSE_PATH);
+		//File IMBALANCE_Directory = new File("Input\\WSN\\"+IMBALANCE_PATH);
 		
 		
 	    String[] filesInDir = DENSE_Directory.list();
 	    boolean flag = true;
 	    for ( int i=0; i<filesInDir.length; i++ )
 	    {
+	    	File temp_Directory = new File("temp\\");
+	    	FileUtils.cleanDirectory(temp_Directory);
 	    	
 	    	String patch = DENSE_Directory.getPath()+"\\"+filesInDir[i];
 	    	DataImport readKwsn = new DataImport();
@@ -65,6 +87,8 @@ public class Main
 	    filesInDir = IMBALANCE_Directory.list();
 	    for ( int i=0; i<filesInDir.length; i++ )
 	    {
+	    	File temp_Directory = new File("temp\\");
+	    	FileUtils.cleanDirectory(temp_Directory);
 	    	
 	    	String patch = IMBALANCE_Directory.getPath()+"\\"+filesInDir[i];
 	    	DataImport readKwsn = new DataImport();
@@ -77,7 +101,7 @@ public class Main
 			flag = verify.getVeriInfo(pnmlFile, txtFile, min_txtFile);
 	    	if(flag) {
 	    		return true;
-	    	}
+	    	}   	
 	    }
 		return false;
 	}

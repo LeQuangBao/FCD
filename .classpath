@@ -6,5 +6,10 @@
 	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_144/lib/ext/jfxrt.jar"/>
 	<classpathentry kind="lib" path="src/AST/antlr-4.5.3-complete.jar"/>
 	<classpathentry kind="lib" path="src/AST/antlr4-runtime-4.5.3.jar"/>
+	<classpathentry kind="lib" path="Lib/commons-io-2.6/commons-io-2.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="Lib/commons-io-2.6/commons-io-2.6-sources.jar"/>
+	<classpathentry kind="lib" path="Lib/commons-io-2.6/commons-io-2.6-test-sources.jar"/>
+	<classpathentry kind="lib" path="Lib/commons-io-2.6/commons-io-2.6-tests.jar"/>
+	<classpathentry kind="lib" path="Lib/commons-io-2.6/commons-io-2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

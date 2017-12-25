@@ -1,10 +1,19 @@
 package Editor;
 
-import Petrinet.*;
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+
+import AST.ASTGen;
+import AST.PTNETLexer;
+import AST.PTNETParser;
+import AST.Program;
+import AST.SearchStmt;
+import Petrinet.Graph;
+import Petrinet.Petrinet;
+import Petrinet.Pnml;
+import Petrinet.Vertex;
 import PetrinetXML.PnmlImporter;
 
-import org.antlr.v4.runtime.*;
-import AST.*;
 public class Verify 
 {
 	private Program prog = null;
