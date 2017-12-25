@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WSN>
+   <Network ChannelMaxBufferSize="5" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5">
+      <Process>
+         <Sensors>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="6" MaxSendingRate="2" Name="Sensor 11" SType="3" id="11">
+               <Position X="9.00" Y="7.43" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="5" MaxSendingRate="2" Name="Sensor 16" SType="3" id="16">
+               <Position X="7.79" Y="1.75" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="14" MaxSendingRate="7" Name="Sensor 17" SType="3" id="17">
+               <Position X="6.69" Y="3.08" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="12" MaxSendingRate="9" Name="Sensor 25" SType="3" id="25">
+               <Position X="8.52" Y="2.33" />
+            </Sensor>
+         </Sensors>
+         <Links>
+            <Link MaxSendingRate="3" id="11_25">
+               <From>Sensor 11</From>
+               <To>Sensor 25</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="11_17">
+               <From>Sensor 11</From>
+               <To>Sensor 17</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="16_17">
+               <From>Sensor 16</From>
+               <To>Sensor 17</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+         </Links>
+      </Process>
+   </Network>
+</WSN>

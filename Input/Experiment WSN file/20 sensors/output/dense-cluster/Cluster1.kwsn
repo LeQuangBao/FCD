@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<WSN>
+	<Network ChannelMaxBufferSize="5" ID="ID" NumberOfPackets="10" NumberOfSensors="20" SensorMaxBufferSize="5" SensorMaxQueueSize="5">
+		<Process Name="name" Parameter="parameter" StateCounter="5" Zoom="0">
+			<Sensors>
+				<Sensor Energy="10.0" Init="true" MaxProcessingRate="15" MaxSendingRate="5" Name="Sensor 11" SType="3" id="11" Token="1">
+					<Position Width="0.0" X="6.91" Y="0.78"/>
+				</Sensor>
+				<Sensor Energy="10.0" Init="true" MaxProcessingRate="1" MaxSendingRate="15" Name="Sensor 1" SType="2" id="1">
+					<Position Width="0.0" X="3.72" Y="1.83"/>
+				</Sensor>
+				<Sensor Energy="10.0" Init="true" MaxProcessingRate="14" MaxSendingRate="1" Name="Sensor 9" SType="3" id="9">
+					<Position Width="0.0" X="5.63" Y="3.59"/>
+				</Sensor>
+				<Sensor Energy="10.0" Init="true" MaxProcessingRate="1" MaxSendingRate="15" Name="Sensor 4" SType="1" id="4">
+					<Position Width="0.0" X="8.8" Y="2.9"/>
+				</Sensor>
+				<Sensor Energy="10.0" Init="true" MaxProcessingRate="4" MaxSendingRate="4" Name="Sensor 13" SType="3" id="13">
+					<Position Width="0.0" X="7.59" Y="2.37"/>
+				</Sensor>
+			</Sensors>
+			<Links>
+				<Link CType="2" LType="Real" MaxSendingRate="3" ProbabilityPathCongestion="0.25" id="11_1">
+					<From>Sensor 11</From>
+					<To>Sensor 1</To>
+				</Link>
+				<Link CType="2" LType="Real" MaxSendingRate="3" ProbabilityPathCongestion="0.25" id="13_9">
+					<From>Sensor 13</From>
+					<To>Sensor 9</To>
+				</Link>
+				<Link CType="2" LType="Real" MaxSendingRate="3" ProbabilityPathCongestion="0.25" id="4_13">
+					<From>Sensor 4</From>
+					<To>Sensor 13</To>
+				</Link>
+				<Link CType="2" LType="Real" MaxSendingRate="3" ProbabilityPathCongestion="0.25" id="13_11">
+					<From>Sensor 13</From>
+					<To>Sensor 11</To>
+				</Link>
+				<Link CType="2" LType="Real" MaxSendingRate="3" ProbabilityPathCongestion="0.25" id="9_1">
+					<From>Sensor 9</From>
+					<To>Sensor 1</To>
+				</Link>
+			</Links>
+		</Process>
+	</Network>
+</WSN>

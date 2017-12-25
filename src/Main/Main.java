@@ -8,6 +8,7 @@ import Editor.Verify;
 import KWNS.Channel;
 import KWNS.Sensor;
 import KWNS.WSN;
+import util.CreateNewCluster;
 import util.NetworkHandler;
 import util.ReadXMLFile;
 import util.WriteXMLFile;
@@ -15,46 +16,12 @@ public class Main
 {
 	public static void main(String[] args) throws Exception 
 	{	
-		File aDirectory = new File("Input\\Test\\Cluster");
-
-	    String[] filesInDir = aDirectory.list();
-	    boolean flag = true;
-	    for ( int i=0; i<filesInDir.length; i++ )
-	    {
-	    	
-	    	String patch = aDirectory.getPath()+"\\"+filesInDir[i];
+		boolean flag =VerifyInput();
+	    if(!flag) {
+	    	buildTopology();
+		    String patch ="\\NewWSN\\result.kwsn";
 	    	DataImport readKwsn = new DataImport();
 			readKwsn.Import(patch);
-			String pnmlFile = "temp/temp.pnml";
-			String txtFile = "temp/temp.txt";
-			String min_txtFile = "temp/temp_mini.txt";
-			System.out.println("Verifying file: "+i);
-			Verify verify = new Verify();
-			flag = verify.getVeriInfo(pnmlFile, txtFile, min_txtFile);
-	    	if(flag) {
-	    		break;
-	    	}
-	    }
-	    if(!flag) {
-	    	File aDirectory2 = new File("Input\\Test\\");
-	    	ReadXMLFile readXMLFile = new ReadXMLFile();
-	    	String patch = aDirectory2.getPath()+"\\WSN-topology.kwsn";
-	    	WSN result = null;
-	    	WSN original =readXMLFile.readFile(patch);
-	    	
-	    	String[] filesInDir2 = aDirectory.list();
-		    for ( int i=0; i<filesInDir2.length; i++ )
-		    {
-		    	String patch2 = aDirectory2.getPath()+"\\Cluster\\"+filesInDir[i];
-		    	WSN cluster = readXMLFile.readFile(patch2);
-		    	result = gatherNetwork(original, cluster);
-		    	original=result;
-		    }
-		    WriteXMLFile.write(result, "Input\\Test\\NewWSN\\result.kwsn");
-		    
-		    String patch3 = aDirectory2.getPath()+"\\NewWSN\\result.kwsn";
-	    	DataImport readKwsn = new DataImport();
-			readKwsn.Import(patch3);
 			String pnmlFile = "temp/temp.pnml";
 			String txtFile = "temp/temp.txt";
 			String min_txtFile = "temp/temp_mini.txt";
@@ -63,6 +30,83 @@ public class Main
 			verify.getVeriInfo(pnmlFile, txtFile, min_txtFile);
 	    }
 	}
+	
+	public static Boolean VerifyInput() throws Exception
+	{
+		CreateNewCluster creation = new CreateNewCluster();
+		creation.autoCreateNewCluster();
+		
+		File Directory = new File("Output\\WSN\\");
+		String DENSE_PATH = "dense-cluster";
+		String IMBALANCE_PATH = "imbalanced-cluster";
+		
+		
+	    String[] filesInDir = Directory.list();
+	    boolean flag = true;
+	    for ( int i=0; i<filesInDir.length; i++ )
+	    {
+	    	
+	    	String patch = Directory.getPath()+"\\"+DENSE_PATH+"\\"+filesInDir[i];
+	    	DataImport readKwsn = new DataImport();
+			readKwsn.Import(patch);
+			String pnmlFile = "temp/temp.pnml";
+			String txtFile = "temp/temp.txt";
+			String min_txtFile = "temp/temp_mini.txt";
+			System.out.println("Verifying file "+DENSE_PATH +": "+i);
+			Verify verify = new Verify();
+			flag = verify.getVeriInfo(pnmlFile, txtFile, min_txtFile);
+	    	if(flag) {
+	    		return true;
+	    	}
+	    }
+	    for ( int i=0; i<filesInDir.length; i++ )
+	    {
+	    	
+	    	String patch = Directory.getPath()+"\\"+IMBALANCE_PATH+"\\"+filesInDir[i];
+	    	DataImport readKwsn = new DataImport();
+			readKwsn.Import(patch);
+			String pnmlFile = "temp/temp.pnml";
+			String txtFile = "temp/temp.txt";
+			String min_txtFile = "temp/temp_mini.txt";
+			System.out.println("Verifying file "+IMBALANCE_PATH +": "+i);
+			Verify verify = new Verify();
+			flag = verify.getVeriInfo(pnmlFile, txtFile, min_txtFile);
+	    	if(flag) {
+	    		return true;
+	    	}
+	    }
+		return false;
+	}
+	public static void buildTopology()
+	{
+		File Directory = new File("Intput\\WSN\\");
+    	ReadXMLFile readXMLFile = new ReadXMLFile();
+    	String originalPatch = Directory.getPath()+"\\file-kwsn\\WSN-topology.kwsn";
+    	WSN original =readXMLFile.readFile(originalPatch);
+    	
+    	WSN result = null;
+    	
+    	 String DENSE_PATH = "dense-cluster";
+    	 String IMBALANCE_PATH = "imbalanced-cluster";
+    	 
+    	String[] filesInDir = Directory.list();
+	    for ( int i=0; i<filesInDir.length; i++ )
+	    {
+	    	String clusterPatch = Directory.getPath()+"\\"+DENSE_PATH+"\\"+filesInDir[i];
+	    	WSN cluster = readXMLFile.readFile(clusterPatch);
+	    	result = gatherNetwork(original, cluster);
+	    	original=result;
+	    }
+	    for ( int i=0; i<filesInDir.length; i++ )
+	    {
+	    	String clusterPatch = Directory.getPath()+"\\"+IMBALANCE_PATH+"\\"+filesInDir[i];
+	    	WSN cluster = readXMLFile.readFile(clusterPatch);
+	    	result = gatherNetwork(original, cluster);
+	    	original=result;
+	    }
+	    WriteXMLFile.write(result, "NewKWNS\\New-WSN-topology.kwsn");
+	}
+	
 	
 	public static WSN gatherNetwork(WSN original, WSN cluster) {
 		Sensor mainSensor = NetworkHandler.gather(cluster.getSensors());

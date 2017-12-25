@@ -3,8 +3,6 @@ package KWNS;
 import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
-import Converter.BaseSensor;
-
 public class Sensor {
 
 	String id;
@@ -15,7 +13,7 @@ public class Sensor {
 	// 2: Sink
 	// 3: Intermediate
 	int sType;
-
+	
 	int maxSendingRate;
 	int maxProcessingRate;
 	int maxBufferSize;
@@ -29,28 +27,8 @@ public class Sensor {
 	HashSet<Channel> channels = new HashSet<>();
 	
 	boolean visited = false;
-	String energy;
-	public BaseSensor pnmlSensor;
-	
-	String token;
 
 	
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public String getEnergy() {
-		return energy;
-	}
-
-	public void setEnergy(String energy) {
-		this.energy = energy;
-	}
 
 	/**
 	 * Compare two sensor

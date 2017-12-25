@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WSN>
+   <Network ChannelMaxBufferSize="5" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5">
+      <Process>
+         <Sensors>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="11" MaxSendingRate="3" Name="Sensor 13" SType="3" id="13">
+               <Position X="8.55" Y="5.14" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="14" MaxSendingRate="13" Name="Sensor 23" SType="3" id="23">
+               <Position X="5.21" Y="1.30" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="13" MaxSendingRate="7" Name="Sensor 37" SType="3" id="37">
+               <Position X="5.09" Y="1.60" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="8" MaxSendingRate="2" Name="Sensor 41" SType="3" id="41">
+               <Position X="5.95" Y="2.63" />
+            </Sensor>
+         </Sensors>
+         <Links>
+            <Link MaxSendingRate="3" id="15_30">
+               <From>Sensor 15</From>
+               <To>Sensor 30</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="13_23">
+               <From>Sensor 13</From>
+               <To>Sensor 23</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="41_37">
+               <From>Sensor 41</From>
+               <To>Sensor 37</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="29_13">
+               <From>Sensor 29</From>
+               <To>Sensor 13</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="25_37">
+               <From>Sensor 25</From>
+               <To>Sensor 37</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="13_37">
+               <From>Sensor 13</From>
+               <To>Sensor 37</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+         </Links>
+      </Process>
+   </Network>
+</WSN>
