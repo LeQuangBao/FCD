@@ -46,8 +46,7 @@ public abstract class Converter {
      * Get list of sensor
      * @return list of sensor
      */
-    @SuppressWarnings("unchecked")
-	protected List<Sensor> getListSensor () {
+    protected List<Sensor> getListSensor () {
         return (List<Sensor>)
                 this.topologyData.getOrDefault(TopologyConstants.SENSORS_LIST_KEY,null);
     }
@@ -56,8 +55,7 @@ public abstract class Converter {
      * Get list of channel
      * @return list of channel
      */
-    @SuppressWarnings("unchecked")
-	protected List<Link> getListChannel () {
+    protected List<Link> getListChannel () {
         return (List<Link>)
                 this.topologyData.getOrDefault(TopologyConstants.CHANNEL_LIST_KEY,null);
     }

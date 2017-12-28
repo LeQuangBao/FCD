@@ -20,7 +20,6 @@ import javafx.collections.ObservableList;
  *
  * @author phongtl.hf
  */
-@SuppressWarnings("restriction")
 @XmlRootElement
 public class InitializeData {
     

@@ -16,9 +16,9 @@ import PetrinetXML.PnmlImporter;
 
 public class Verify 
 {
-	private Program prog = null;
+	private static Program prog = null;
 	
-	private  Graph genGraph(String file, Petrinet pt) throws Exception {
+	private static Graph genGraph(String file, Petrinet pt) throws Exception {
 		//Program prog = null;
 		ANTLRFileStream source = new ANTLRFileStream(file); // in bin folder
 		PTNETLexer lexer = new PTNETLexer(source);
@@ -43,7 +43,11 @@ public class Verify
 		boolean flag =true;
     
     System.out.println("\nThe reachability graph has " + g.getSize() + " nodes.");
-
+		if (g.getSize()>300000) {
+			System.out.println(" (partial).\n");
+		} else {
+			System.out.println(" (full).\n");
+		}
 		SearchStmt stmt = (SearchStmt)prog.funcList.get("main").block.stmts.get(0);
 		String congest = g.search(stmt, prog.constList);
     if (congest.isEmpty()) {
@@ -57,18 +61,7 @@ public class Verify
         System.out.println(congest + "\nCongest state is " + congestState.toString());
         return flag;
         // sb.append(congest).append("Congest state is ").append(congestState.toString()).append("\n");
-  			/*sb.append(congest);		
-  			String Hcongest = g.newSearch(stmt, prog.constList);
-  			if (Hcongest.isEmpty()) {
-  				System.out.println("No congestion is found");
-  				return sb.toString();
-  			} else {
-  				System.out.println(Hcongest);
-  				
-  				return sb.toString();
-  			}*/
-  	      
-  	      
+  	           
     }
 		
 	}

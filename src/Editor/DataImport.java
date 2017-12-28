@@ -22,7 +22,6 @@ public class DataImport {
 	 * @param editor
 	 */
 	private Board board;
-	@SuppressWarnings("unchecked")
 	public void Import (String filePath) 
 	{	
 		String folderPath = "temp\\";

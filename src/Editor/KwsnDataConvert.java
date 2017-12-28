@@ -6,7 +6,6 @@ import java.util.List;
 import WSN.Link;
 import javafx.geometry.Point2D;
 
-@SuppressWarnings("restriction")
 public class KwsnDataConvert {
 	
 	public static final String SENSOR_KEY = "1";

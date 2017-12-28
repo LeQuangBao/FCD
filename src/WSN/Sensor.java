@@ -22,8 +22,11 @@ public class Sensor {
     public int Type;
     @XmlElement(name = "Position")
     public Position pos;
-    public float energy = 100;
-    public BaseSensor pnmlSensor;
+    @XmlAttribute(name = "Energy")
+    public float energy;
+    @XmlAttribute(name = "Token")
     public String token;
+    public BaseSensor pnmlSensor;
+    
 
 }
