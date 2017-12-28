@@ -26,22 +26,26 @@ public class CreateNewCluster {
 	public void autoCreateNewCluster() {
 		int index = 1;
 		String fileName;
-		File file;;
+		File file;
 		
 		// Auto Create for Dense Cluster
 		while (true) {
 			fileName = "Cluster" + index + ".kwsn";
 			file = new File(IN_DENSE_PATH+fileName);
 			if (file.exists()) {
-				try {
+				//try {
 					System.out.println("Processing: " + IN_DENSE_PATH + fileName);
-					action(IN_DENSE_PATH , fileName);
-					System.out.println("\tProcessed Successfully!");
+					try {
+						action(IN_DENSE_PATH , fileName);
+						System.out.println("\tProcessed :" + IN_DENSE_PATH + fileName + " Successfully!");
+					}catch(Exception exx) {
+						System.out.println("\tProcess " + IN_DENSE_PATH + fileName + " Failed!\t " + exx);
+					}
 					index++;
-				} catch(Exception ex) {
+				/*} catch(Exception ex) {
 					System.out.println("\tProcess Failed!\t"+ex);
-					break;
-				}
+					//break;
+				}*/
 			} else {
 				break;
 			}
@@ -54,15 +58,19 @@ public class CreateNewCluster {
 					fileName = "Cluster" + index + ".kwsn";
 					file = new File(IN_IMBALANCE_PATH+fileName);					
 					if (file.exists()) {
-						try {
+						//try {
 							System.out.println("Processing: " + IN_IMBALANCE_PATH + fileName);
-							action(IN_IMBALANCE_PATH , fileName);
-							System.out.println("\tProcessed Successfully!");
+							try {
+								action(IN_IMBALANCE_PATH , fileName);
+								System.out.println("\tProcessed :" + IN_IMBALANCE_PATH + fileName + " Successfully!");
+							}catch(Exception exx) {
+								System.out.println("\tProcess " + IN_IMBALANCE_PATH + fileName + " Failed!\t " + exx);
+							}
 							index++;
-						} catch(Exception ex) {
+						/*} catch(Exception ex) {
 							System.out.println("\tProcess Failed!\t"+ex);
 							break;
-						}
+						}*/
 					} else {
 						break;
 					}

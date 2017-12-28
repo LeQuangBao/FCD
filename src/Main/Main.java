@@ -63,6 +63,7 @@ public class Main
 		//File DENSE_Directory = new File("Input\\WSN\\"+DENSE_PATH);
 		//File IMBALANCE_Directory = new File("Input\\WSN\\"+IMBALANCE_PATH);
 		
+		System.out.println("Processing Verifying: ");
 		
 	    String[] filesInDir = DENSE_Directory.list();
 	    boolean flag = true;
