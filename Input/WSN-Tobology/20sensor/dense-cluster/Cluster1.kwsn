@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WSN>
+   <Network ChannelMaxBufferSize="5" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5">
+      <Process>
+         <Sensors>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="14" MaxSendingRate="1" Name="Sensor 9" SType="3" id="9">
+               <Position X="5.63" Y="3.59" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="15" MaxSendingRate="5" Name="Sensor 11" SType="3" id="11">
+               <Position X="6.91" Y="0.78" />
+            </Sensor>
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="4" MaxSendingRate="4" Name="Sensor 13" SType="3" id="13">
+               <Position X="7.59" Y="2.37" />
+            </Sensor>
+         </Sensors>
+         <Links>
+            <Link MaxSendingRate="3" id="9_13">
+               <From>Sensor 9</From>
+               <To>Sensor 13</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="11_13">
+               <From>Sensor 11</From>
+               <To>Sensor 13</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+            <Link MaxSendingRate="3" id="9_11">
+               <From>Sensor 9</From>
+               <To>Sensor 11</To>
+               <IsConverted>false</IsConverted>
+            </Link>
+         </Links>
+      </Process>
+   </Network>
+</WSN>

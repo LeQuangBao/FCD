@@ -3,17 +3,17 @@
    <Network ChannelMaxBufferSize="5" NumberOfPackets="10" SensorMaxBufferSize="5" SensorMaxQueueSize="5">
       <Process>
          <Sensors>
-            <Sensor Energy="10.0" Init="True" MaxProcessingRate="13" MaxSendingRate="12" Name="Sensor 5" SType="3" id="5">
-               <Position X="6.54" Y="4.67" />
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="12" MaxSendingRate="6" Name="Sensor 5" SType="3" id="5">
+               <Position X="0.66" Y="1.38" />
             </Sensor>
-            <Sensor Energy="10.0" Init="True" MaxProcessingRate="12" MaxSendingRate="8" Name="Sensor 15" SType="3" id="15">
-               <Position X="7.35" Y="3.33" />
+            <Sensor Energy="10.0" Init="True" MaxProcessingRate="8" MaxSendingRate="5" Name="Sensor 85" SType="3" id="85">
+               <Position X="5.74" Y="1.14" />
             </Sensor>
          </Sensors>
          <Links>
-            <Link MaxSendingRate="3" id="5_15">
+            <Link MaxSendingRate="3" id="5_85">
                <From>Sensor 5</From>
-               <To>Sensor 15</To>
+               <To>Sensor 85</To>
                <IsConverted>false</IsConverted>
             </Link>
          </Links>
